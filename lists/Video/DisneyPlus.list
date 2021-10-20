@@ -2,3 +2,9 @@ DOMAIN-SUFFIX,disney-plus.net
 DOMAIN-SUFFIX,disneyplus.com
 DOMAIN-SUFFIX,disney.playback.edge.bamgrid.com
 DOMAIN-SUFFIX,media.dssott.com
+DOMAIN,js-agent.newrelic.com
+DOMAIN,prod-static.disney-plus.net
+DOMAIN-KEYWORD,disney
+DOMAIN-SUFFIX,bamgrid.com
+DOMAIN-SUFFIX,braze.com
+DOMAIN-SUFFIX,disney.demdex.net

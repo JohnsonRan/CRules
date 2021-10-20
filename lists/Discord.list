@@ -1,5 +1,10 @@
-DOMAIN,discord.com
+DOMAIN-SUFFIX,discord.co
+DOMAIN-SUFFIX,discord.com
 DOMAIN-SUFFIX,discord.gg
-DOMAIN-SUFFIX,discordapp.net
-DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discord.gift
+DOMAIN-SUFFIX,discord.gifts
 DOMAIN-SUFFIX,discord.media
+DOMAIN-SUFFIX,discord.new
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
+DOMAIN-SUFFIX,discordstatus.com
