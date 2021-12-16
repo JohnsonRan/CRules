@@ -3,7 +3,7 @@ name: Update ChinaIP and Domain
 on:
   workflow_dispatch:
   schedule: 
-    - cron:  '30 9 * * *'
+    - cron:  '30 9 * * 1'
   push:
     branches:
       - main
