@@ -1,0 +1,66 @@
+name: Update ChinaIP and Domain
+
+on:
+  workflow_dispatch:
+  schedule: 
+    - cron:  '30 9 * * *'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/README.md"
+
+jobs:
+  build:
+    runs-on: 
+    - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Obtain CN IP lists
+        run: |
+          mkdir dist1/
+          curl -LR -o dist1/ChinaIP.list "https://raw.githubusercontent.com/ym/chnroutes2/master/chnroutes.txt"
+          curl -LR -o dist1/ChinaDomainN.list "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf"
+          curl -LR -o dist1/custom.list "https://raw.githubusercontent.com/JohnsonRan/ChinaIP-Domain/main/custom/custom.list"
+          curl -LR -o dist1/GFWList.list "https://raw.githubusercontent.com/RodmanWang/ChinaIP-and-GFW/release/GFW.txt"
+
+          mkdir dist2/
+          curl -LR -o dist2/Amazon.list "https://raw.githubusercontent.com/lord-alfred/ipranges/main/amazon/ipv4_merged.txt"
+          curl -LR -o dist2/Microsoft.list "https://raw.githubusercontent.com/lord-alfred/ipranges/main/microsoft/ipv4_merged.txt"
+          curl -LR -o dist2/Google.list "https://raw.githubusercontent.com/lord-alfred/ipranges/main/google/ipv4_merged.txt"
+
+          mkdir dist3/
+          curl -LR -o dist3/AntiAD.list "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt"
+          
+      - name: Convert format that fit Clash
+        run: |
+          sed -i "s/\(.*\)\/*$/IP-CIDR,\1\,no-resolve/g;/^IP-CIDR,/!d" dist1/ChinaIP.list
+          sed -i 's/^IP-CIDR,#./# /g' dist1/ChinaIP.list
+          sed -i "s/^server=\/\(.*\)\/[^\/]*$/DOMAIN,\1/g;/^DOMAIN,/!d" dist1/ChinaDomainN.list
+          cat dist1/custom.list >> dist1/ChinaDomainN.list
+          awk '!seen[$0]++' dist1/ChinaDomainN.list | sort -n | grep -Ev "^#|^$" > dist1/ChinaDomain.list
+          sed -i "s/\(.*\)\/*$/DOMAIN,\1/g;/^DOMAIN,/!d" dist1/GFWList.list
+
+          sed -i "s/\(.*\)\/*$/IP-CIDR,\1\,no-resolve/g;/^IP-CIDR,/!d" dist2/Amazon.list
+          sed -i "s/\(.*\)\/*$/IP-CIDR,\1\,no-resolve/g;/^IP-CIDR,/!d" dist2/Microsoft.list
+          sed -i "s/\(.*\)\/*$/IP-CIDR,\1\,no-resolve/g;/^IP-CIDR,/!d" dist2/Google.list
+
+          sed -i "s/\(.*\)\/*$/DOMAIN,\1/g;/^DOMAIN,/!d" dist3/AntiAD.list
+          sed -i 's/^DOMAIN,#./# /g' dist3/AntiAD.list
+
+          
+      - name: Push to release branch
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"    
+          git fetch
+          git checkout GenRulesN
+          mv dist1/* .
+          mv dist2/* .
+          mv dist3/* .
+          rm ChinaDomainN.list
+          rm custom.list
+          rm -rf dist*
+          git add *
+          git commit -m "Update : $(TZ=UTC-8 date "+%Y-%m-%d %H:%M:%S")"
+          git push origin GenRulesN
