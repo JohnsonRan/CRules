@@ -1,3 +1,2 @@
-DOMAIN,origin.com
-DOMAIN,signin.ea.com
-DOMAIN,accounts.ea.com
+DOMAIN-SUFFIX,origin.com
+DOMAIN-SUFFIX,ea.com
