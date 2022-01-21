@@ -1,0 +1,36 @@
+name: Purge CDN cache
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - GenRulesN
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Purge jsdelivr CDN for master branch
+        run: |
+          for file in $(ls config); do
+            curl -i "https://purge.jsdelivr.net/gh/JohnsonRan/ClashRules-conf@master/config/${file}"
+          done
+          for file in $(ls lists); do
+            curl -i "https://purge.jsdelivr.net/gh/JohnsonRan/ClashRules-conf@master/lists/${file}"
+          done
+          for file in $(ls lists/Game); do
+            curl -i "https://purge.jsdelivr.net/gh/JohnsonRan/ClashRules-conf@master/lists/Game/${file}"
+          done
+          for file in $(ls lists/Video); do
+            curl -i "https://purge.jsdelivr.net/gh/JohnsonRan/ClashRules-conf@master/lists/Video/${file}"
+          done
+
+      - uses: actions/checkout@v2
+        with:
+          ref: GenRulesN
+      - name: Purge jsdelivr CDN for GenRulesN branch 
+        run: |
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/JohnsonRan/ClashRules-conf@GenRulesN/${file}"
+          done
