@@ -148,4 +148,3 @@ redir-port: 7892
 tproxy-port: 7895
 port: 7890
 secret: '123456'
-external-ui: "/usr/share/openclash/dashboard"
