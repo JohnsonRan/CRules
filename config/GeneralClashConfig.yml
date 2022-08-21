@@ -1,13 +1,31 @@
-mixed-port: 7893
-socks-port: 7891
+mixed-port: 7890
+geodata-mode: true
+tcp-concurrent: true
 allow-lan: true
 bind-address: "*"
 ipv6: false
 mode: rule
-log-level: error
+log-level: warning
 external-controller: 0.0.0.0:9090
 experimental:
   ignore-resolve-fail: true
+sniffer:
+  enable: true
+  sniffing:
+    - tls
+    - http
+  skip-domain:
+    - '+.apple.com'
+    - 'Mijia Cloud'
+    - '+.jd.com'
+  force-domain:
+    - '+.netflix.com'
+    - '+.nflxvideo.net'
+    - '+.amazonaws.com'
+    - '+.media.dssott.com'
+  port-whitelist:
+    - 443
+    - 80
 dns:
   enable: true
   ipv6: false
@@ -15,6 +33,8 @@ dns:
   fallback-filter:
     geoip: true
     geoip-code: CN
+    geosite:
+      - gfw
     ipcidr:
     - 0.0.0.0/8
     - 10.0.0.0/8
@@ -33,14 +53,16 @@ dns:
     - 240.0.0.0/4
     - 255.255.255.255/32
     domain:
-    - "+.google.com"
-    - "+.facebook.com"
-    - "+.youtube.com"
-    - "+.githubusercontent.com"
-    - "+.googlevideo.com"
+    - '+.google.com'
+    - '+.facebook.com'
+    - '+.youtube.com'
+    - '+.githubusercontent.com'
+    - '+.googlevideo.com'
   nameserver:
-  - quic://x.passcloud.xyz:784
-  - tls://x.passcloud.xyz
+    - 223.5.5.5
+    - 202.38.93.95
   fallback:
-  - https://a.passcloud.xyz/dns-query
-  - quic://a.passcloud.xyz:784
+    - tls://8.8.8.8
+    - tls://8.8.4.4
+  proxy-server-nameserver:
+    - tls://1.0.0.1
