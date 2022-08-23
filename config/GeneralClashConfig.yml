@@ -60,9 +60,10 @@ dns:
     - '+.googlevideo.com'
   nameserver:
     - 223.5.5.5
-    - 202.38.93.95
+    - 61.132.163.68 #安徽电信DNS
   fallback:
     - tls://8.8.8.8
     - tls://8.8.4.4
   proxy-server-nameserver:
     - tls://1.0.0.1
+    - tls://8.8.4.4
