@@ -59,11 +59,10 @@ dns:
     - '+.githubusercontent.com'
     - '+.googlevideo.com'
   nameserver:
-    - 223.5.5.5
-    - 61.132.163.68 #安徽电信DNS
+    - quic://x.passcloud.xyz
+    - quic://h.iqiq.io
   fallback:
-    - tls://8.8.8.8
-    - tls://8.8.4.4
+    - https://a.passcloud.xyz/dns-query
+    - https://i.passcloud.xyz/dns-query
   proxy-server-nameserver:
-    - tls://1.0.0.1
-    - tls://8.8.4.4
+    - tls://x.passcloud.xyz
