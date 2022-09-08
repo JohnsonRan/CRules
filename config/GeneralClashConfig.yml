@@ -64,5 +64,3 @@ dns:
   fallback:
     - https://a.passcloud.xyz/dns-query
     - https://i.passcloud.xyz/dns-query
-  proxy-server-nameserver:
-    - tls://x.passcloud.xyz
