@@ -59,8 +59,10 @@ dns:
     - '+.githubusercontent.com'
     - '+.googlevideo.com'
   nameserver:
-    - quic://x.passcloud.xyz
-    - quic://h.iqiq.io
+    - tls://x.passcloud.xyz
+    - tls://h.iqiq.io
   fallback:
     - https://a.passcloud.xyz/dns-query
     - https://i.passcloud.xyz/dns-query
+  proxy-server-nameserver:
+    - 223.5.5.5
