@@ -34,7 +34,7 @@ dns:
     geoip: true
     geoip-code: CN
     geosite:
-      - gfw
+      - '!CN'
     ipcidr:
     - 0.0.0.0/8
     - 10.0.0.0/8
