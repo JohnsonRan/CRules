@@ -45,3 +45,5 @@ dns:
     - 'https://1.0.0.1/dns-query#自动选择'
   proxy-server-nameserver:
     - 223.5.5.5
+experimental:
+  ignore-resolve-fail: true
