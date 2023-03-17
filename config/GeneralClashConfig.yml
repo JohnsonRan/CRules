@@ -12,21 +12,23 @@ profile:
   store-fake-ip: true
 sniffer:
   enable: true
-  sniffing:
-    - tls
-    - http
-  skip-domain:
-    - '+.apple.com'
-    - 'Mijia Cloud'
-    - '+.jd.com'
+  parse-pure-ip: true
   force-domain:
-    - '+.netflix.com'
-    - '+.nflxvideo.net'
-    - '+.amazonaws.com'
-    - '+.media.dssott.com'
-  port-whitelist:
-    - 443
-    - 80
+  - "+.netflix.com"
+  - "+.nflxvideo.net"
+  - "+.amazonaws.com"
+  - "+.media.dssott.com"
+  skip-domain:
+  - "+.apple.com"
+  - Mijia Cloud
+  - "+.jd.com"
+  sniff:
+    TLS:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
 dns:
   enable: true
   ipv6: false
