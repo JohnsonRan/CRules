@@ -34,17 +34,8 @@ dns:
   ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - '!CN'
   nameserver:
-    - https://223.5.5.5/dns-query
-    - https://120.53.53.53/dns-query
-  fallback:
-    - 'https://8.8.4.4/dns-query#自动选择'
-    - 'https://1.0.0.1/dns-query#自动选择'
+    - https://doh.apad.pro/dns-query
   proxy-server-nameserver:
     - 223.5.5.5
 experimental:
