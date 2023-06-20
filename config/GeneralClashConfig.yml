@@ -3,15 +3,21 @@ geodata-mode: true
 tcp-concurrent: true
 allow-lan: true
 bind-address: "*"
-ipv6: false
+ipv6: true
 mode: rule
+geox-url:
+  geoip: "https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
+  geosite: "https://github.com/Loyalsoldier/geoip/raw/release/geosite.dat"
+  mmdb: "https://github.com/Loyalsoldier/geoip/raw/release/Country.mmdb"
 log-level: warning
 external-controller: 0.0.0.0:9090
+global-client-fingerprint: chrome
 profile:
   store-selected: true
   store-fake-ip: true
 sniffer:
   enable: true
+  force-dns-mapping: true
   parse-pure-ip: true
   force-domain:
   - "+.netflix.com"
@@ -31,7 +37,8 @@ sniffer:
       override-destination: true
 dns:
   enable: true
-  ipv6: false
+  prefer-h3: true
+  ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   nameserver:
