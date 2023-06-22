@@ -3,11 +3,11 @@ geodata-mode: true
 tcp-concurrent: true
 allow-lan: true
 bind-address: "*"
-ipv6: true
+ipv6: false
 mode: rule
 geox-url:
-  geoip: "https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
-  geosite: "https://github.com/Loyalsoldier/geoip/raw/release/geosite.dat"
+  geoip: "https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat"
+  geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
   mmdb: "https://github.com/Loyalsoldier/geoip/raw/release/Country.mmdb"
 log-level: warning
 external-controller: 0.0.0.0:9090
@@ -38,7 +38,7 @@ sniffer:
 dns:
   enable: true
   prefer-h3: true
-  ipv6: true
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   nameserver:
