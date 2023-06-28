@@ -39,8 +39,7 @@ dns:
   enable: true
   prefer-h3: true
   ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  enhanced-mode: redir-host
   nameserver:
     - https://doh.apad.pro/dns-query
   proxy-server-nameserver:
