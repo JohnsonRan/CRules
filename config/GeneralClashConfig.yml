@@ -1,5 +1,6 @@
 mixed-port: 7890
 geodata-mode: true
+geodata-loader: standard
 tcp-concurrent: true
 allow-lan: true
 bind-address: "*"
@@ -14,7 +15,6 @@ external-controller: 0.0.0.0:9090
 global-client-fingerprint: chrome
 profile:
   store-selected: true
-  store-fake-ip: true
 sniffer:
   enable: true
   force-dns-mapping: true
