@@ -42,6 +42,7 @@ dns:
   enhanced-mode: redir-host
   nameserver:
     - https://doh.apad.pro/dns-query
+    - https://dns.cooluc.com/dns-query
   proxy-server-nameserver:
     - 223.5.5.5
 experimental:
