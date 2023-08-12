@@ -10,7 +10,7 @@ geox-url:
   geoip: "https://raw.gitmirror.com/Loyalsoldier/geoip/release/geoip.dat"
   geosite: "https://raw.gitmirror.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat"
   mmdb: "https://raw.gitmirror.com/Loyalsoldier/geoip/release/Country.mmdb"
-log-level: warning
+log-level: info
 external-controller: 0.0.0.0:9090
 global-client-fingerprint: chrome
 profile:
@@ -47,3 +47,4 @@ dns:
     - 223.5.5.5
 experimental:
   ignore-resolve-fail: true
+unified-delay: true
