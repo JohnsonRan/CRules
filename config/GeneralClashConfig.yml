@@ -7,9 +7,9 @@ bind-address: "*"
 ipv6: false
 mode: rule
 geox-url:
-  geoip: "https://raw.gitmirror.com/Loyalsoldier/geoip/release/geoip.dat"
-  geosite: "https://raw.gitmirror.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat"
-  mmdb: "https://raw.gitmirror.com/Loyalsoldier/geoip/release/Country.mmdb"
+  geoip: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geoip.dat"
+  geosite: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
+  mmdb: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/country.mmdb"
 log-level: info
 external-controller: 0.0.0.0:9090
 global-client-fingerprint: chrome
