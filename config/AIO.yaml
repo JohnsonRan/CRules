@@ -61,8 +61,8 @@ proxy-groups:
   - {name: Tracker, <<: *pr}
   - {name: 流媒体, <<: *pr}
   - {name: Porns, <<: *pr}
-  - {name: Bilibili, <<: *pr}
-  - {name: 巴哈姆特, <<: *pr}
+  - {name: Bilibili, type: select, proxies: [DIRECT, 🇭🇰 香港节点, 🇹🇼 台湾节点]}
+  - {name: 巴哈姆特, type: select, proxies: [🇹🇼 台湾节点, DIRECT]}
   - {name: Microsoft, <<: *pr}
   - {name: Discord, <<: *pr}
   - {name: CN, type: select, proxies: [DIRECT, 自动选择]}
