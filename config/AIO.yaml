@@ -41,6 +41,7 @@ sniffer:
 
 dns:
   enable: true
+  prefer-h3: true
   listen: :1053
   ipv6: true
   enhanced-mode: redir-host
