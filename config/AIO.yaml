@@ -77,7 +77,8 @@ proxy-groups:
 
 rules:
   - RULE-SET,custom_direct,DIRECT
-  - GEOIP,lan,DIRECT,no-resolve
+  - GEOIP,private,DIRECT,no-resolve
+  - GEOSITE,private,DIRECT,no-resolve
   - GEOSITE,tracker,Tracker
   - RULE-SET,custom_proxy,自动选择
   - GEOSITE,biliintl,自动选择
