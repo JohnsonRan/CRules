@@ -1,5 +1,5 @@
 # 策略组相关
-pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, DIRECT]}
+pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
 # 这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: 'https://cp.cloudflare.com', interval: 300}}
 
@@ -53,7 +53,7 @@ dns:
       - https://dns.cooluc.com/dns-query
 
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, DIRECT]}
+  - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
   - {name: 自动选择, type: url-test, include-all-providers: true, interval: 300}
   - {name: Github, <<: *pr}
   - {name: Telegram, <<: *pr}
@@ -62,19 +62,19 @@ proxy-groups:
   - {name: Tracker, <<: *pr}
   - {name: 流媒体, <<: *pr}
   - {name: Porns, <<: *pr}
-  - {name: Bilibili, type: select, proxies: [DIRECT, 🇭🇰 香港节点, 🇹🇼 台湾节点]}
-  - {name: 巴哈姆特, type: select, proxies: [🇹🇼 台湾节点, DIRECT]}
+  - {name: Bilibili, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
+  - {name: 巴哈姆特, type: select, proxies: [🇼🇸 台湾, DIRECT]}
   - {name: Microsoft, <<: *pr}
   - {name: Discord, <<: *pr}
   - {name: CN, type: select, proxies: [DIRECT, 自动选择]}
   - {name: MATCH, <<: *pr}
 
 # 分隔,下面是地区分组
-  - {name: 🇭🇰 香港节点, type: url-test , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇹🇼 台湾节点, type: url-test , include-all-providers: true, filter: "(?i)台|tw|taiwan"}
-  - {name: 🇯🇵 日本节点, type: url-test , include-all-providers: true, filter: "(?i)日|jp|japan"}
-  - {name: 🇸🇬 新加坡节点, type: url-test , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
-  - {name: 🇺🇸 美国节点, type: url-test , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 🇭🇰 香港, type: url-test , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
+  - {name: 🇼🇸 台湾, type: url-test , include-all-providers: true, filter: "(?i)台|tw|taiwan"}
+  - {name: 🇯🇵 日本, type: url-test , include-all-providers: true, filter: "(?i)日|jp|japan"}
+  - {name: 🇸🇬 新加坡, type: url-test , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
+  - {name: 🇺🇸 美国, type: url-test , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
 
 rules:
   - RULE-SET,custom_direct,DIRECT
