@@ -1,7 +1,7 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, DIRECT]}
 # 这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 3600, health-check: {enable: true, url: 'https://cp.cloudflare.com', interval: 300}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: 'https://cp.cloudflare.com', interval: 300}}
 
 
 # https://hub.docker.com/r/xream/sub-store
