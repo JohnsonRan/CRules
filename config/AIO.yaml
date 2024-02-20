@@ -1,7 +1,7 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
 # 这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: 'https://cp.cloudflare.com', interval: 300}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://cp.cloudflare.com", interval: 300}}
 
 
 # https://hub.docker.com/r/xream/sub-store
@@ -63,7 +63,7 @@ dns:
 
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
-  - {name: 自动选择, type: url-test, include-all-providers: true, interval: 300}
+  - {name: 自动选择, type: fallback, include-all-providers: true, interval: 300}
   - {name: Github, <<: *pr}
   - {name: Telegram, <<: *pr}
   - {name: Google, <<: *pr}
@@ -78,11 +78,11 @@ proxy-groups:
   - {name: MATCH, <<: *pr}
 
 # 分隔,下面是地区分组
-  - {name: 🇭🇰 香港, type: url-test , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇼🇸 台湾, type: url-test , include-all-providers: true, filter: "(?i)台|tw|taiwan"}
-  - {name: 🇯🇵 日本, type: url-test , include-all-providers: true, filter: "(?i)日|jp|japan"}
-  - {name: 🇸🇬 新加坡, type: url-test , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
-  - {name: 🇺🇸 美国, type: url-test , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 🇭🇰 香港, type: fallback , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
+  - {name: 🇼🇸 台湾, type: fallback , include-all-providers: true, filter: "(?i)台|tw|taiwan"}
+  - {name: 🇯🇵 日本, type: fallback , include-all-providers: true, filter: "(?i)日|jp|japan"}
+  - {name: 🇸🇬 新加坡, type: fallback , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
+  - {name: 🇺🇸 美国, type: fallback , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
 
 rules:
   - RULE-SET,custom_direct,DIRECT
