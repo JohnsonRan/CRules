@@ -75,7 +75,6 @@ proxy-groups:
   - {name: 巴哈姆特, type: select, proxies: [🇼🇸 台湾, DIRECT]}
   - {name: Microsoft, <<: *pr}
   - {name: Discord, <<: *pr}
-  - {name: CN, type: select, proxies: [DIRECT, 自动选择]}
   - {name: MATCH, <<: *pr}
 
 # 分隔,下面是地区分组
