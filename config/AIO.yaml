@@ -64,7 +64,7 @@ dns:
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
   - {name: 自动选择, type: fallback, include-all-providers: true, interval: 300}
-  - {name: Emby, type: select, proxies: [0.1x, 0.01x, 自动选择, DIRECT]}
+  - {name: Emby, type: select, proxies: [0.1x, 0.01x, 🚀 节点选择, DIRECT]}
   - {name: Github, <<: *pr}
   - {name: Telegram, <<: *pr}
   - {name: Google, <<: *pr}
@@ -92,8 +92,8 @@ rules:
   - GEOIP,private,DIRECT,no-resolve
   - GEOSITE,private,DIRECT,no-resolve
   - GEOSITE,tracker,Tracker
-  - RULE-SET,custom_proxy,自动选择
-  - GEOSITE,biliintl,自动选择
+  - RULE-SET,custom_proxy,🚀 节点选择
+  - GEOSITE,biliintl,🚀 节点选择
   - RULE-SET,custom_reject,REJECT-DROP
   - GEOSITE,category-ads-all,REJECT-DROP
   - GEOSITE,youtube,YouTube
