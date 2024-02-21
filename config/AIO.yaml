@@ -64,6 +64,7 @@ dns:
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
   - {name: 自动选择, type: fallback, include-all-providers: true, interval: 300}
+  - {name: Emby, type: select, proxies: [0.1x, 0.01x, 自动选择, DIRECT]}
   - {name: Github, <<: *pr}
   - {name: Telegram, <<: *pr}
   - {name: Google, <<: *pr}
@@ -83,6 +84,8 @@ proxy-groups:
   - {name: 🇯🇵 日本, type: fallback , include-all-providers: true, filter: "(?i)日|jp|japan"}
   - {name: 🇸🇬 新加坡, type: fallback , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
   - {name: 🇺🇸 美国, type: fallback , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 0.1x, type: fallback , include-all-providers: true, filter: "(?i)0.1x"}
+  - {name: 0.01x, type: fallback , include-all-providers: true, filter: "(?i)0.01x"}
 
 rules:
   - RULE-SET,custom_direct,DIRECT
@@ -108,6 +111,7 @@ rules:
   - GEOSITE,github,Github
   - GEOSITE,microsoft,Microsoft
   - GEOSITE,bahamut,巴哈姆特
+  - RULE-SET,emby,Emby
   - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,MATCH
@@ -115,6 +119,7 @@ rules:
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
+  classical: &classical {type: http, interval: 86400, behavior: classical, format: text}
 
 # https://wiki.metacubex.one/config/syntax/?h=%E9%80%9A%E9%85%8D%E7%AC%A6#_6
 # https://wiki.metacubex.one/config/rule-providers/content/#__tabbed_2_1
@@ -128,3 +133,6 @@ rule-providers:
   custom_reject:
     <<: *domain
     url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/reject.yaml"
+  emby:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
