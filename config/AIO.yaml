@@ -75,7 +75,6 @@ proxy-groups:
   - {name: Bilibili, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
   - {name: 巴哈姆特, type: select, proxies: [🇼🇸 台湾, DIRECT]}
   - {name: Microsoft, <<: *pr}
-  - {name: Discord, <<: *pr}
   - {name: MATCH, <<: *pr}
 
 # 分隔,下面是地区分组
@@ -103,7 +102,6 @@ rules:
   - GEOIP,netflix,流媒体
   - GEOSITE,primevideo,流媒体
   - GEOSITE,disney,流媒体
-  - GEOSITE,discord,Discord
   - GEOSITE,category-porn,Porns
   - GEOSITE,bilibili,Bilibili
   - GEOIP,telegram,Telegram
