@@ -3,7 +3,6 @@ pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港, 🇼🇸 �
 # 这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://cp.cloudflare.com", interval: 300}}
 
-
 # https://hub.docker.com/r/xream/sub-store
 proxy-providers:
   provider1:
@@ -65,6 +64,7 @@ proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
   - {name: 自动选择, type: fallback, include-all-providers: true, interval: 300}
   - {name: Emby, type: select, proxies: [0.1x, 0.01x, 🚀 节点选择, DIRECT]}
+  - {name: AI, <<: *pr}
   - {name: Github, <<: *pr}
   - {name: Telegram, <<: *pr}
   - {name: Google, <<: *pr}
@@ -95,6 +95,7 @@ rules:
   - GEOSITE,biliintl,🚀 节点选择
   - RULE-SET,custom_reject,REJECT-DROP
   - GEOSITE,category-ads-all,REJECT-DROP
+  - RULE-SET,ai,AI
   - GEOSITE,youtube,YouTube
   - GEOSITE,google,Google
   - GEOIP,google,Google
@@ -133,4 +134,7 @@ rule-providers:
     url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/reject.yaml"
   emby:
     <<: *classical
-    url: "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
+    url: "https://raw.gitmirror.com/Repcz/Tool/X/Surge/Rules/Emby.list"
+  ai:
+    <<: *classical
+    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/AI.list"
