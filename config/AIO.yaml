@@ -15,11 +15,11 @@ mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
 
-geodata-mode: true
+geodata-mode: false
 geox-url:
   geoip: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geoip.dat"
   geosite: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
-  mmdb: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/country.mmdb"
+  mmdb: "https://raw.gitmirror.com/NobyDa/geoip/release/Private-GeoIP.mmdb"
 
 profile:
   store-selected: true
