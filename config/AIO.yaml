@@ -137,4 +137,4 @@ rule-providers:
     url: "https://raw.gitmirror.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
     <<: *classical
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/AI.list"
+    url: "https://raw.gitmirror.com/EAlyce/conf/main/Rule/OpenAI.list"
