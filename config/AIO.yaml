@@ -9,15 +9,16 @@ proxy-providers:
     <<: *p
     url: "http://172.16.1.50:3001/D2UhuYViWtqwddacM4ss/download/collection/AIO"
 
-ipv6: true
+ipv6: false
+log-level: info
 allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
 
-geodata-mode: false
+geodata-mode: true
 geox-url:
-  geoip: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geoip.dat"
+  geoip: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geoip-lite.dat"
   geosite: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
   mmdb: "https://raw.gitmirror.com/NobyDa/geoip/release/Private-GeoIP.mmdb"
 
@@ -29,32 +30,33 @@ sniffer:
   enable: true
   force-dns-mapping: true
   parse-pure-ip: true
+  override-destination: true
   sniff:
     HTTP:
-      ports: [80, 8080-8880]
       override-destination: true
+      ports:
+        - 80
+        - 8080-8880
     TLS:
-      ports: [443, 8443]
+      override-destination: true
+      ports:
+        - 443
+        - 8443
     QUIC:
-      ports: [443, 8443]
-  force-domain:
-    - "+.netflix.com"
-    - "+.nflxvideo.net"
-    - "+.amazonaws.com"
-    - "+.media.dssott.com"
-  skip-domain:
-    - "+.apple.com"
-    - "Mijia Cloud"
-    - "dlg.io.mi.com"
+      override-destination: true
+      ports:
+        - 443
+        - 8443
 
 dns:
   enable: true
   prefer-h3: true
   enhanced-mode: redir-host
-  listen: :1053
-  ipv6: true
+  listen: :53
+  ipv6: false
   nameserver:
-    - https://223.5.5.5/dns-query
+    - 223.5.5.5
+    - 119.29.29.29
   nameserver-policy:
     "geosite:geolocation-!cn":
       - https://doh.apad.pro/dns-query
@@ -63,7 +65,7 @@ dns:
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
   - {name: 自动选择, type: fallback, include-all-providers: true, interval: 300}
-  - {name: Emby, type: select, proxies: [0.1x, 0.01x, 🚀 节点选择, DIRECT]}
+  - {name: Emby, type: select, proxies: [低倍率, 🚀 节点选择, DIRECT]}
   - {name: AI, <<: *pr}
   - {name: Github, <<: *pr}
   - {name: Telegram, <<: *pr}
@@ -83,19 +85,15 @@ proxy-groups:
   - {name: 🇯🇵 日本, type: fallback , include-all-providers: true, filter: "(?i)日|jp|japan"}
   - {name: 🇸🇬 新加坡, type: fallback , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
   - {name: 🇺🇸 美国, type: fallback , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 0.1x, type: fallback , include-all-providers: true, filter: "(?i)0.1x"}
-  - {name: 0.01x, type: fallback , include-all-providers: true, filter: "(?i)0.01x"}
+  - {name: 低倍率, type: fallback , include-all-providers: true, filter: "(?i)0.0"}
 
 rules:
   - RULE-SET,custom_direct,DIRECT
-  - GEOIP,private,DIRECT,no-resolve
-  - GEOSITE,private,DIRECT,no-resolve
   - GEOSITE,tracker,Tracker
   - RULE-SET,custom_proxy,🚀 节点选择
   - GEOSITE,biliintl,🚀 节点选择
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,adrules,REJECT
-  - GEOSITE,category-ads-all,REJECT
   - RULE-SET,ai,AI
   - GEOSITE,youtube,YouTube
   - GEOIP,google,Google
@@ -133,12 +131,12 @@ rule-providers:
   custom_reject:
     <<: *domain
     url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/reject.yaml"
-  adrules:
-    <<: *domaintxt
-    url: "https://adrules.top/adrules_domainset.txt"
   emby:
     <<: *classical
     url: "https://raw.gitmirror.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
     <<: *classical
     url: "https://raw.gitmirror.com/EAlyce/conf/main/Rule/OpenAI.list"
+  adrules:
+    <<: *domaintxt
+    url: "https://adrules.top/adrules_domainset.txt"
