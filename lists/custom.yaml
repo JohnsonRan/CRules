@@ -3,4 +3,4 @@ payload:
   - "*.pro.xns.one"
   - "+.gitmirror.com"
   - "+.sharepoint.cn"
-  - "steamserver.net"
+  - "+.steamserver.net"
