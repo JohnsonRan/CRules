@@ -1,7 +1,7 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
 # 这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://cp.cloudflare.com", interval: 300}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: "http://cp.cloudflare.com", interval: 600}, override: {smux: {enabled: true, protocol: h2mux, max-connections: 16, min-streams: 4, padding: true, brutal-opts: {enabled: true, up: 500, down: 1000, statistic: true}}}}
 
 # https://hub.docker.com/r/xream/sub-store
 proxy-providers:
@@ -15,6 +15,9 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
+find-process-mode: strict
+keep-alive-interval: 600
+external-controller: 0.0.0.0:9090
 
 geodata-mode: true
 geox-url:
@@ -52,11 +55,11 @@ dns:
   enable: true
   prefer-h3: true
   enhanced-mode: redir-host
-  listen: :53
+  listen: 0.0.0.0:53
   ipv6: false
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
+    - system
+    - dhcp://system
   nameserver-policy:
     "geosite:geolocation-!cn":
       - https://doh.apad.pro/dns-query
