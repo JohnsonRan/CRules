@@ -1,7 +1,9 @@
 # 策略组相关
-pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
+pr: &pr {type: select, proxies: [节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+url-test: &url-test {type: url-test, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+fallback: &fallback {type: fallback, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
 # 这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://cp.cloudflare.com", interval: 300}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: "http://latency-test.skk.moe/endpoint", interval: 600}}
 
 # https://hub.docker.com/r/xream/sub-store
 proxy-providers:
@@ -15,6 +17,9 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
+find-process-mode: strict
+keep-alive-interval: 600
+external-controller: 0.0.0.0:9090
 
 geodata-mode: true
 geox-url:
@@ -34,64 +39,60 @@ sniffer:
   sniff:
     HTTP:
       override-destination: true
-      ports:
-        - 80
-        - 8080-8880
+      ports: [80, 8080-8880]
     TLS:
       override-destination: true
-      ports:
-        - 443
-        - 8443
+      ports: [443, 8443]
     QUIC:
       override-destination: true
-      ports:
-        - 443
-        - 8443
+      ports: [443, 8443]
+  skip-domain:
+    - Mijia Cloud
 
 dns:
   enable: true
   prefer-h3: true
   enhanced-mode: redir-host
-  listen: :53
+  listen: 0.0.0.0:1053
   ipv6: false
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
+    - system
+    - dhcp://system
   nameserver-policy:
     "geosite:geolocation-!cn":
       - https://doh.apad.pro/dns-query
       - https://dns.cooluc.com/dns-query
 
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
-  - {name: 自动选择, type: fallback, include-all-providers: true, interval: 300}
-  - {name: Emby, type: select, proxies: [低倍率, 🚀 节点选择, DIRECT]}
-  - {name: AI, <<: *pr}
-  - {name: Github, <<: *pr}
-  - {name: Telegram, <<: *pr}
-  - {name: Google, <<: *pr}
-  - {name: YouTube, <<: *pr}
-  - {name: Tracker, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
-  - {name: 流媒体, <<: *pr}
-  - {name: Porns, <<: *pr}
-  - {name: Bilibili, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
-  - {name: 巴哈姆特, type: select, proxies: [🇼🇸 台湾, DIRECT]}
-  - {name: Microsoft, <<: *pr}
-  - {name: MATCH, <<: *pr}
+  - {name: 节点选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+  - {name: 自动选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *fallback}
+  - {name: Emby, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png, <<: *pr}
+  - {name: AI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png, <<: *pr}
+  - {name: Github, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png, <<: *pr}
+  - {name: Telegram, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
+  - {name: Google, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
+  - {name: YouTube, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
+  - {name: Tracker, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
+  - {name: 流媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png, <<: *pr}
+  - {name: Porns, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pornhub_1.png, <<: *pr}
+  - {name: Bilibili, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili_4.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
+  - {name: 巴哈姆特, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png, type: select, proxies: [🇼🇸 台湾, DIRECT]}
+  - {name: Microsoft, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png, <<: *pr}
+  - {name: MATCH, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
 
 # 分隔,下面是地区分组
-  - {name: 🇭🇰 香港, type: fallback , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇼🇸 台湾, type: fallback , include-all-providers: true, filter: "(?i)台|tw|taiwan"}
-  - {name: 🇯🇵 日本, type: fallback , include-all-providers: true, filter: "(?i)日|jp|japan"}
-  - {name: 🇸🇬 新加坡, type: fallback , include-all-providers: true, filter: "(?i)(新|sg|singapore)"}
-  - {name: 🇺🇸 美国, type: fallback , include-all-providers: true, filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 低倍率, type: fallback , include-all-providers: true, filter: "(?i)0.0"}
+  - {name: 🇭🇰 香港, <<: *url-test, filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+  - {name: 🇺🇸 美国, <<: *url-test, filter: "(?i)🇺🇸|美国|洛杉矶|圣何塞|(\b(US|United States)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+  - {name: 🇸🇬 新加坡, <<: *url-test, filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
+  - {name: 🇯🇵 日本, <<: *url-test, filter: "(?i)🇯🇵|日本|东京|(\b(JP|Japan)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+  - {name: 🇼🇸 台湾, <<: *url-test, filter: "(?i)🇨🇳|🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
+  - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png}
 
 rules:
   - RULE-SET,custom_direct,DIRECT
   - GEOSITE,tracker,Tracker
-  - RULE-SET,custom_proxy,🚀 节点选择
-  - GEOSITE,biliintl,🚀 节点选择
+  - RULE-SET,custom_proxy,节点选择
+  - GEOSITE,biliintl,节点选择
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,adrules,REJECT
   - RULE-SET,ai,AI
@@ -119,8 +120,8 @@ rule-anchor:
   domaintxt: &domaintxt {type: http, interval: 86400, behavior: domain, format: text}
   classical: &classical {type: http, interval: 86400, behavior: classical, format: text}
 
-# https://wiki.metacubex.one/config/syntax/?h=%E9%80%9A%E9%85%8D%E7%AC%A6#_6
-# https://wiki.metacubex.one/config/rule-providers/content/#__tabbed_2_1
+# https://wiki.metacubex.one/config/syntax/#_7
+# https://wiki.metacubex.one/config/rule-providers/content/#rule-providers
 rule-providers:
   custom_direct:
     <<: *domain
