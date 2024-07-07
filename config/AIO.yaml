@@ -94,7 +94,7 @@ rules:
   - RULE-SET,custom_proxy,节点选择
   - GEOSITE,biliintl,节点选择
   - RULE-SET,custom_reject,REJECT
-  - RULE-SET,adrules,REJECT
+  - RULE-SET,ADs_merged,REJECT
   - RULE-SET,ai,AI
   - GEOSITE,youtube,YouTube
   - GEOIP,google,Google
@@ -125,19 +125,19 @@ rule-anchor:
 rule-providers:
   custom_direct:
     <<: *domain
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/custom.yaml"
+    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/custom.yaml"
   custom_proxy:
     <<: *domain
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/customProxy.yaml"
+    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/customProxy.yaml"
   custom_reject:
     <<: *domain
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/lists/reject.yaml"
+    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/reject.yaml"
   emby:
     <<: *classical
     url: "https://raw.gitmirror.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
     <<: *classical
     url: "https://raw.gitmirror.com/EAlyce/conf/main/Rule/OpenAI.list"
-  adrules:
+  ADs_merged:
     <<: *domaintxt
-    url: "https://adrules.top/adrules_domainset.txt"
+    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/ADs_merged.txt"

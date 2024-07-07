@@ -1,0 +1,45 @@
+name: Merge rules
+
+on:
+  schedule:
+    - cron: '0 0 * * *' 
+  workflow_dispatch:
+
+jobs:
+  merge-and-clean:
+    runs-on: ubuntu-latest
+    env:
+      TZ: 'Asia/Shanghai'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download and process lists
+      run: |
+        curl https://adrules.top/adrules_domainset.txt -o adrules_domainset.txt
+        curl https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi.txt -o multi.txt
+        cat adrules_domainset.txt multi.txt | sed '/^#/d' | sort | uniq > combined.txt
+        awk '/^\+\./ {gsub(/^\+/, "*"); print}' combined.txt > exclude_list.txt
+        awk 'NR==FNR {exclude[$0]; next} !($0 in exclude)' exclude_list.txt combined.txt | sort | uniq > ADs_merged_temp.txt
+        RULES_COUNT=$(wc -l < ADs_merged_temp.txt)
+        UPDATE_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+        echo -e "# 更新时间: $UPDATE_TIME\n# 规则数量: $RULES_COUNT\n$(cat ADs_merged_temp.txt)" > ADs_merged.txt
+
+    - name: Commit and push changes
+      run: |
+        mv ADs_merged.txt rules/
+        CURRENT_TIME=$(date +"%Y-%m-%d %H:%M")
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add rules/ADs_merged.txt
+        git commit -m "Auto Update $CURRENT_TIME" -a || echo "No changes to commit"
+        git push origin master
+
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: 0
+        keep_minimum_runs: 2
