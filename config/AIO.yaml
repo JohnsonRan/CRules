@@ -90,11 +90,11 @@ proxy-groups:
 
 rules:
   - RULE-SET,custom_direct,DIRECT
-  - GEOSITE,tracker,Tracker
   - RULE-SET,custom_proxy,节点选择
-  - GEOSITE,biliintl,节点选择
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
+  - GEOSITE,biliintl,节点选择
+  - GEOSITE,tracker,Tracker
   - RULE-SET,ai,AI
   - GEOSITE,youtube,YouTube
   - GEOIP,google,Google
@@ -111,6 +111,7 @@ rules:
   - GEOSITE,microsoft,Microsoft
   - GEOSITE,bahamut,巴哈姆特
   - RULE-SET,emby,Emby
+  - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,MATCH
 
