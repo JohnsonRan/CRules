@@ -56,8 +56,8 @@ dns:
   listen: 0.0.0.0:1053
   ipv6: false
   nameserver:
-    - system
-    - dhcp://system
+    - 223.5.5.5
+    - 180.184.1.1
   nameserver-policy:
     "geosite:geolocation-!cn":
       - https://doh.apad.pro/dns-query
