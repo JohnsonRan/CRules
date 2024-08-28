@@ -1,6 +1,12 @@
 payload:
   - "+.ghproxy.com"
-  - "*.pro.xns.one"
+  - "+.beta.xns.one"
+  - "+.kahkee.xns.one"
+  - "+.pro.xns.one"
+  - "+.novaxns.one"
+  - "+.xns.rodeo"
+  - "+.xns.my.id"
+  - "+.nxns.link"
   - "+.gitmirror.com"
   - "+.sharepoint.cn"
   - "+.steamserver.net"
