@@ -51,14 +51,19 @@ sniffer:
 
 dns:
   enable: true
-  prefer-h3: true
+  prefer-h3: false
   enhanced-mode: redir-host
   listen: 0.0.0.0:1053
   ipv6: false
+  use-hosts: false
+  use-system-hosts: false
   nameserver:
     - 223.5.5.5
     - 180.184.1.1
   nameserver-policy:
+    "*": 127.0.0.1#lo
+    "+.lan": 127.0.0.1#lo
+    "+.local": 127.0.0.1#lo
     "geosite:geolocation-!cn":
       - https://doh.apad.pro/dns-query
       - https://dns.cooluc.com/dns-query
