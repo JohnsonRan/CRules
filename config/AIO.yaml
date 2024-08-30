@@ -11,15 +11,16 @@ proxy-providers:
     <<: *p
     url: "http://172.16.1.50:3001/D2UhuYViWtqwddacM4ss/download/collection/AIO"
 
-ipv6: false
-log-level: info
-allow-lan: true
 mixed-port: 7890
+ipv6: false
+log-level: warning
+allow-lan: true
 unified-delay: true
 tcp-concurrent: true
-find-process-mode: strict
-keep-alive-interval: 600
+external-ui: ui
+external-ui-name: metacubexd
 external-controller: 0.0.0.0:9090
+external-ui-url: https://mirror.ghproxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
 
 geodata-mode: true
 geox-url:
@@ -35,19 +36,26 @@ sniffer:
   enable: true
   force-dns-mapping: true
   parse-pure-ip: true
-  override-destination: true
   sniff:
     HTTP:
-      override-destination: true
       ports: [80, 8080-8880]
-    TLS:
       override-destination: true
+    TLS:
       ports: [443, 8443]
     QUIC:
-      override-destination: true
       ports: [443, 8443]
   skip-domain:
-    - Mijia Cloud
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+tun:
+  enable: true
+  stack: mixed
+  device: JRAN
+  endpoint-independent-nat: true
+  auto-route: false
+  auto-redirect: false
+  auto-detect-interface: false
 
 dns:
   enable: true
@@ -66,7 +74,7 @@ dns:
     "+.local": 127.0.0.1#lo
     "geosite:geolocation-!cn":
       - https://doh.apad.pro/dns-query
-      - https://dns.cooluc.com/dns-query
+      - https://223.5.5.5/dns-query
 
 proxy-groups:
   - {name: 节点选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
