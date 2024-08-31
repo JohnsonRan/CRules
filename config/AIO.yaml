@@ -59,12 +59,15 @@ tun:
 
 dns:
   enable: true
-  prefer-h3: false
-  enhanced-mode: redir-host
-  listen: 0.0.0.0:1053
   ipv6: false
+  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip
   use-hosts: false
   use-system-hosts: false
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - "+.market.xiaomi.com"
   nameserver:
     - 223.5.5.5
     - 180.184.1.1
