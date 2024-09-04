@@ -24,9 +24,9 @@ external-ui-url: https://mirror.ghproxy.com/https://github.com/MetaCubeX/metacub
 
 geodata-mode: true
 geox-url:
-  geoip: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geoip-lite.dat"
-  geosite: "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
-  mmdb: "https://raw.gitmirror.com/NobyDa/geoip/release/Private-GeoIP.mmdb"
+  geoip: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip-lite.dat"
+  geosite: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
+  mmdb: "https://raw.githubusercontent.com/NobyDa/geoip/release/Private-GeoIP.mmdb"
 
 profile:
   store-selected: true
@@ -143,19 +143,19 @@ rule-anchor:
 rule-providers:
   custom_direct:
     <<: *domain
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/custom.yaml"
+    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/custom.yaml"
   custom_proxy:
     <<: *domain
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/customProxy.yaml"
+    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/customProxy.yaml"
   custom_reject:
     <<: *domain
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/reject.yaml"
+    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/reject.yaml"
   emby:
     <<: *classicaltxt
-    url: "https://raw.gitmirror.com/Repcz/Tool/X/Surge/Rules/Emby.list"
+    url: "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
     <<: *classical
     url: "https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/AI.yaml"
   ADs_merged:
     <<: *domaintxt
-    url: "https://raw.gitmirror.com/JohnsonRan/CRules/master/rules/ADs_merged.txt"
+    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.txt"
