@@ -22,6 +22,9 @@ external-ui-name: metacubexd
 external-controller: 0.0.0.0:9090
 external-ui-url: https://mirror.ghproxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
 
+keep-alive-idle: 600
+keep-alive-interval: 15
+
 geodata-mode: true
 geox-url:
   geoip: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip-lite.dat"
