@@ -64,7 +64,7 @@ dns:
   enable: true
   ipv6: false
   listen: 0.0.0.0:1053
-  enhanced-mode: fake-ip
+  enhanced-mode: redir-host
   use-hosts: false
   use-system-hosts: false
   fake-ip-filter:
