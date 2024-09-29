@@ -25,7 +25,7 @@ external-ui-url: https://mirror.ghproxy.com/https://github.com/MetaCubeX/metacub
 keep-alive-idle: 600
 keep-alive-interval: 15
 
-geodata-mode: true
+geodata-mode: false
 geox-url:
   geoip: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip-lite.dat"
   geosite: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
@@ -100,38 +100,38 @@ proxy-groups:
   - {name: MATCH, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
 
 # 分隔,下面是地区分组
-  - {name: 🇭🇰 香港, <<: *url-test, filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
-  - {name: 🇺🇸 美国, <<: *url-test, filter: "(?i)🇺🇸|美国|洛杉矶|圣何塞|(\b(US|United States)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
-  - {name: 🇸🇬 新加坡, <<: *url-test, filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
-  - {name: 🇯🇵 日本, <<: *url-test, filter: "(?i)🇯🇵|日本|东京|(\b(JP|Japan)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
-  - {name: 🇼🇸 台湾, <<: *url-test, filter: "(?i)🇨🇳|🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
-  - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png}
+  - {name: 🇭🇰 香港, <<: *url-test, filter: "🇭🇰|香港|HK|Hong"}
+  - {name: 🇺🇸 美国, <<: *url-test, filter: "🇺🇸|美国|US|United States"}
+  - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
+  - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
+  - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
+  - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW"}
 
 rules:
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
-  - GEOSITE,biliintl,节点选择
-  - GEOSITE,tracker,Tracker
+  - RULE-SET,biliintl,节点选择
+  - RULE-SET,tracker,Tracker
   - RULE-SET,ai,AI
-  - GEOSITE,youtube,YouTube
-  - GEOIP,google,Google
-  - GEOSITE,google,Google
-  - GEOIP,netflix,流媒体
-  - GEOSITE,netflix,流媒体
-  - GEOSITE,primevideo,流媒体
-  - GEOSITE,disney,流媒体
-  - GEOSITE,category-porn,Porns
-  - GEOSITE,bilibili,Bilibili
-  - GEOIP,telegram,Telegram
-  - GEOSITE,telegram,Telegram
-  - GEOSITE,github,Github
-  - GEOSITE,microsoft,Microsoft
-  - GEOSITE,bahamut,巴哈姆特
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google_site,Google
+  - RULE-SET,google_ip,Google
+  - RULE-SET,netflix_site,流媒体
+  - RULE-SET,netflix_ip,流媒体
+  - RULE-SET,primevideo,流媒体
+  - RULE-SET,disney,流媒体
+  - RULE-SET,category-porn,Porns
+  - RULE-SET,bilibili,Bilibili
+  - RULE-SET,tg_site,Telegram
+  - RULE-SET,tg_ip,Telegram
+  - RULE-SET,github,Github
+  - RULE-SET,microsoft,Microsoft
+  - RULE-SET,bahamut,巴哈姆特
   - RULE-SET,emby,Emby
-  - GEOSITE,CN,DIRECT
-  - GEOIP,CN,DIRECT
+  - RULE-SET,cn_site,DIRECT
+  - RULE-SET,cn_ip,DIRECT
   - MATCH,MATCH
 
 rule-anchor:
@@ -140,6 +140,8 @@ rule-anchor:
   domaintxt: &domaintxt {type: http, interval: 86400, behavior: domain, format: text}
   classical: &classical {type: http, interval: 86400, behavior: classical, format: yaml}
   classicaltxt: &classicaltxt {type: http, interval: 86400, behavior: classical, format: text}
+  mrs: &mrs {type: http, interval: 86400, behavior: domain, format: mrs}
+  mrsip: &mrsip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 
 # https://wiki.metacubex.one/config/syntax/#_7
 # https://wiki.metacubex.one/config/rule-providers/content/#rule-providers
@@ -160,5 +162,59 @@ rule-providers:
     <<: *classical
     url: "https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/AI.yaml"
   ADs_merged:
-    <<: *domaintxt
-    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.txt"
+    <<: *mrs
+    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.mrs"
+  biliintl:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs"
+  tracker:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/tracker.mrs"
+  youtube:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs"
+  google_site:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/google.mrs"
+  google_ip:
+    <<: *mrsip
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/google.mrs"
+  netflix_site:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/netflix.mrs"
+  netflix_ip:
+    <<: *mrsip
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/netflix.mrs"
+  primevideo:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/primevideo.mrs"
+  disney:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/disney.mrs"
+  category-porn:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-porn.mrs"
+  bilibili:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bilibili.mrs"
+  tg_ip:
+    <<: *mrsip
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/telegram.mrs"
+  tg_site:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs"
+  github:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/github.mrs"
+  microsoft:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft.mrs"
+  bahamut:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bahamut.mrs"
+  cn_site:
+    <<: *mrs
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"
+  cn_ip:
+    <<: *mrsip
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/cn.mrs"
