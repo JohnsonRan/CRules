@@ -1,9 +1,9 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
-url-test: &url-test {type: url-test, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
-fallback: &fallback {type: fallback, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+url-test: &url-test {type: url-test, url: https://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+fallback: &fallback {type: fallback, url: https://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
 # 这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: "http://latency-test.skk.moe/endpoint", interval: 600}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://latency-test.skk.moe/endpoint", interval: 600}}
 
 # https://hub.docker.com/r/xream/sub-store
 proxy-providers:
@@ -54,6 +54,7 @@ tun:
 dns:
   enable: true
   ipv6: false
+  respect-rules: true
   listen: 0.0.0.0:1053
   enhanced-mode: redir-host
   fake-ip-filter:
@@ -61,15 +62,18 @@ dns:
     - '+.local'
     - '+.market.xiaomi.com'
   nameserver:
-    - 223.5.5.5
-    - 180.184.1.1
+      - 'https://208.67.222.2/dns-query'
+      - 'https://9.9.9.9/dns-query'
+  proxy-server-nameserver:
+      - system
+      - 223.5.5.5
   nameserver-policy:
     '*': 127.0.0.1#lo
     '+.lan': 127.0.0.1#lo
     '+.local': 127.0.0.1#lo
-    'geosite:geolocation-!cn':
-      - 'https://8.8.8.8/dns-query#节点选择'
-      - 'https://9.9.9.9/dns-query#节点选择'
+    'rule-set:cn_site':
+      - 223.5.5.5
+      - system
 
 proxy-groups:
   - {name: 节点选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
