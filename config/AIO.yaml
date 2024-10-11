@@ -80,6 +80,7 @@ proxy-groups:
   - {name: 自动选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *fallback}
   - {name: Emby, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png, <<: *pr}
   - {name: AI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png, <<: *pr}
+  - {name: Apple, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png, <<: *pr}
   - {name: Github, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png, <<: *pr}
   - {name: Telegram, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
   - {name: Google, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
@@ -106,6 +107,7 @@ rules:
   - RULE-SET,httpdns,REJECT
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
+  - RULE-SET,apple,Apple
   - RULE-SET,biliintl,节点选择
   - RULE-SET,tracker,Tracker
   - RULE-SET,ai,AI
@@ -215,3 +217,6 @@ rule-providers:
   httpdns:
     <<: *mrs 
     url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-httpdns-cn.mrs"
+  apple:
+    <<: *mrs 
+    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple.mrs"
