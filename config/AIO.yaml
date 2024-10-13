@@ -70,28 +70,29 @@ dns:
   nameserver-policy:
     '*': 127.0.0.1#lo
     '+.lan': 127.0.0.1#lo
+    '+.arpa': 127.0.0.1#lo
     '+.local': 127.0.0.1#lo
     'rule-set:cn_site':
       - 223.5.5.5
       - system
 
 proxy-groups:
-  - {name: 节点选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
-  - {name: 自动选择, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *fallback}
-  - {name: Emby, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png, <<: *pr}
-  - {name: AI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png, <<: *pr}
-  - {name: Apple, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png, <<: *pr}
-  - {name: Github, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png, <<: *pr}
-  - {name: Telegram, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
-  - {name: Google, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
-  - {name: YouTube, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
-  - {name: Tracker, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
-  - {name: 流媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png, <<: *pr}
-  - {name: Porns, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pornhub_1.png, <<: *pr}
-  - {name: Bilibili, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili_4.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
+  - {name: 节点选择, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+  - {name: 自动选择, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Omission.png, <<: *fallback}
+  - {name: Emby, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Emby.png, <<: *pr}
+  - {name: AI, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/AI.png, <<: *pr}
+  - {name: Apple, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
+  - {name: Github, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/GitHub.png, <<: *pr}
+  - {name: Telegram, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Telegram.png, <<: *pr}
+  - {name: Google, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Google.png, <<: *pr}
+  - {name: YouTube, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/YouTube.png, <<: *pr}
+  - {name: Tracker, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Download.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
+  - {name: 流媒体, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Netflix.png, <<: *pr}
+  - {name: Porns, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Pornhub.png, <<: *pr}
+  - {name: Bilibili, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Bilibili.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
   - {name: 巴哈姆特, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png, type: select, proxies: [🇼🇸 台湾, DIRECT]}
-  - {name: Microsoft, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png, <<: *pr}
-  - {name: MATCH, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
+  - {name: Microsoft, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Microsoft.png, <<: *pr}
+  - {name: MATCH, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Failover.png, <<: *pr}
 
 # 分隔,下面是地区分组
   - {name: 🇭🇰 香港, <<: *url-test, filter: "🇭🇰|香港|HK|Hong"}
