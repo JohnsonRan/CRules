@@ -72,7 +72,7 @@ dns:
     '+.lan': 127.0.0.1#lo
     '+.arpa': 127.0.0.1#lo
     '+.local': 127.0.0.1#lo
-    'rule-set:cn_site':
+    'rule-set:cn_site,apple':
       - 223.5.5.5
       - system
 
