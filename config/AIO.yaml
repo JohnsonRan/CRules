@@ -81,7 +81,7 @@ proxy-groups:
   - {name: 自动选择, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Omission.png, <<: *fallback}
   - {name: Emby, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Emby.png, <<: *pr}
   - {name: AI, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/AI.png, <<: *pr}
-  - {name: Apple, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
+  - {name: Apple, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [🇺🇸 美国, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, DIRECT]}
   - {name: Github, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/GitHub.png, <<: *pr}
   - {name: Telegram, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Telegram.png, <<: *pr}
   - {name: Google, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Google.png, <<: *pr}
@@ -108,7 +108,8 @@ rules:
   - RULE-SET,httpdns,REJECT
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
-  - RULE-SET,apple,Apple
+  - RULE-SET,apple_proxy,Apple
+  - RULE-SET,apple,DIRECT
   - RULE-SET,biliintl,节点选择
   - RULE-SET,tracker,Tracker
   - RULE-SET,ai,AI
@@ -221,3 +222,6 @@ rule-providers:
   apple:
     <<: *mrs 
     url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple.mrs"
+  apple_proxy:
+    <<: *classicaltxt
+    url: "https://github.com/Repcz/Tool/raw/X/Surge/Rules/AppleProxy.list"
