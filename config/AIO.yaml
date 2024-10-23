@@ -20,7 +20,7 @@ tcp-concurrent: true
 external-ui: ui
 external-ui-name: metacubexd
 external-controller: 0.0.0.0:9090
-external-ui-url: https://ghp.ci/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+external-ui-url: https://raw.e11z.net/github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
 
 keep-alive-idle: 600
 keep-alive-interval: 15
@@ -77,22 +77,22 @@ dns:
       - system
 
 proxy-groups:
-  - {name: 节点选择, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
-  - {name: 自动选择, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Omission.png, <<: *fallback}
-  - {name: Emby, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Emby.png, <<: *pr}
-  - {name: AI, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/AI.png, <<: *pr}
-  - {name: Apple, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [🇺🇸 美国, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, DIRECT]}
-  - {name: Github, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/GitHub.png, <<: *pr}
-  - {name: Telegram, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Telegram.png, <<: *pr}
-  - {name: Google, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Google.png, <<: *pr}
-  - {name: YouTube, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/YouTube.png, <<: *pr}
-  - {name: Tracker, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Download.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
-  - {name: 流媒体, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Netflix.png, <<: *pr}
-  - {name: Porns, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Pornhub.png, <<: *pr}
-  - {name: Bilibili, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Bilibili.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
-  - {name: 巴哈姆特, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png, type: select, proxies: [🇼🇸 台湾, DIRECT]}
-  - {name: Microsoft, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Microsoft.png, <<: *pr}
-  - {name: MATCH, icon: https://github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Failover.png, <<: *pr}
+  - {name: 节点选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+  - {name: 自动选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Omission.png, <<: *fallback}
+  - {name: Emby, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Emby.png, <<: *pr}
+  - {name: AI, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/AI.png, <<: *pr}
+  - {name: Apple, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [🇺🇸 美国, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, DIRECT]}
+  - {name: Github, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/GitHub.png, <<: *pr}
+  - {name: Telegram, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Telegram.png, <<: *pr}
+  - {name: Google, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Google.png, <<: *pr}
+  - {name: YouTube, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/YouTube.png, <<: *pr}
+  - {name: Tracker, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Download.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
+  - {name: 流媒体, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Netflix.png, <<: *pr}
+  - {name: Porns, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Pornhub.png, <<: *pr}
+  - {name: Bilibili, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Bilibili.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
+  - {name: 巴哈姆特, icon: https://raw.e11z.net/raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png, type: select, proxies: [🇼🇸 台湾, DIRECT]}
+  - {name: Microsoft, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Microsoft.png, <<: *pr}
+  - {name: MATCH, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Failover.png, <<: *pr}
 
 # 分隔,下面是地区分组
   - {name: 🇭🇰 香港, <<: *url-test, filter: "🇭🇰|香港|HK|Hong"}
@@ -146,82 +146,82 @@ rule-anchor:
 rule-providers:
   custom_direct:
     <<: *domain
-    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/custom.yaml"
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/custom.yaml"
   custom_proxy:
     <<: *domain
-    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/customProxy.yaml"
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/customProxy.yaml"
   custom_reject:
     <<: *domain
-    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/reject.yaml"
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/reject.yaml"
   emby:
     <<: *classicaltxt
-    url: "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
+    url: "https://raw.e11z.net/raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
     <<: *classical
     url: "https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/AI.yaml"
   ADs_merged:
     <<: *mrs
-    url: "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.mrs"
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.mrs"
   biliintl:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs"
   tracker:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/tracker.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/tracker.mrs"
   youtube:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs"
   google_site:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/google.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/google.mrs"
   google_ip:
     <<: *mrsip
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/google.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/google.mrs"
   netflix_site:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/netflix.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/netflix.mrs"
   netflix_ip:
     <<: *mrsip
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/netflix.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/netflix.mrs"
   primevideo:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/primevideo.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/primevideo.mrs"
   disney:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/disney.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/disney.mrs"
   category-porn:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-porn.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-porn.mrs"
   bilibili:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bilibili.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bilibili.mrs"
   tg_ip:
     <<: *mrsip
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/telegram.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/telegram.mrs"
   tg_site:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs"
   github:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/github.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/github.mrs"
   microsoft:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft.mrs"
   bahamut:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bahamut.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bahamut.mrs"
   cn_site:
     <<: *mrs
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"
   cn_ip:
     <<: *mrsip
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/cn.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/cn.mrs"
   httpdns:
     <<: *mrs 
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-httpdns-cn.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-httpdns-cn.mrs"
   apple:
     <<: *mrs 
-    url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple.mrs"
+    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple.mrs"
   apple_proxy:
     <<: *classicaltxt
-    url: "https://github.com/Repcz/Tool/raw/X/Surge/Rules/AppleProxy.list"
+    url: "https://raw.e11z.net/github.com/Repcz/Tool/raw/X/Surge/Rules/AppleProxy.list"
