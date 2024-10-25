@@ -65,7 +65,7 @@ dns:
       - 'https://208.67.222.2/dns-query'
       - 'https://9.9.9.9/dns-query'
   proxy-server-nameserver:
-      - system
+      - 101.226.4.6
       - 223.5.5.5
   nameserver-policy:
     '*': 127.0.0.1#lo
@@ -74,7 +74,7 @@ dns:
     '+.local': 127.0.0.1#lo
     'rule-set:cn_site,apple':
       - 223.5.5.5
-      - system
+      - 101.226.4.6
 
 proxy-groups:
   - {name: 节点选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
