@@ -157,8 +157,8 @@ rule-providers:
     <<: *classicaltxt
     url: "https://raw.e11z.net/raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
-    <<: *classical
-    url: "https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/AI.yaml"
+    <<: *classicaltxt
+    url: "https://ruleset.skk.moe/List/non_ip/ai.conf"
   ADs_merged:
     <<: *mrs
     url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.mrs"
