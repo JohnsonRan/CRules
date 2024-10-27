@@ -50,6 +50,9 @@ tun:
   stack: mixed
   device: JRAN
   endpoint-independent-nat: true
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
 
 dns:
   enable: true
