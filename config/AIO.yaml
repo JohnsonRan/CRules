@@ -160,8 +160,8 @@ rule-providers:
     <<: *classicaltxt
     url: "https://raw.e11z.net/raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
-    <<: *classicaltxt
-    url: "https://ruleset.skk.moe/List/non_ip/ai.conf"
+    <<: *mrs
+    url: "https://raw.e11z.net/github.com/ForestL18/rules-dat/raw/mihomo/geo/domain/ai-domain.mrs"
   ADs_merged:
     <<: *mrs
     url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.mrs"
@@ -218,7 +218,7 @@ rule-providers:
     url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"
   cn_ip:
     <<: *mrsip
-    url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/cn.mrs"
+    url: "https://raw.e11z.net/github.com/ForestL18/rules-dat/raw/mihomo/asn/combined/China-ASN-combined.mrs"
   httpdns:
     <<: *mrs 
     url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-httpdns-cn.mrs"
