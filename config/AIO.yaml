@@ -68,15 +68,15 @@ dns:
       - 'https://208.67.222.2/dns-query'
       - 'https://9.9.9.9/dns-query'
   proxy-server-nameserver:
-      - 101.226.4.6
-      - 180.184.1.1
+      - 101.226.4.6 #360
+      - 180.184.1.1 #bytedance
   nameserver-policy:
     '*': 127.0.0.1#lo
     '+.lan': 127.0.0.1#lo
     '+.arpa': 127.0.0.1#lo
     '+.local': 127.0.0.1#lo
     'rule-set:cn_site,apple':
-      - 122.112.208.1
+      - 122.112.208.1 #huawei
       - 101.226.4.6
 
 proxy-groups:
