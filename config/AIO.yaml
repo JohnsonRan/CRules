@@ -75,6 +75,7 @@ dns:
     '+.lan': 127.0.0.1#lo
     '+.arpa': 127.0.0.1#lo
     '+.local': 127.0.0.1#lo
+    '+.ts.net': 127.0.0.1#tailscale0
     'rule-set:cn_site,apple':
       - 122.112.208.1 #huawei
       - 101.226.4.6
@@ -106,6 +107,7 @@ proxy-groups:
   - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW"}
 
 rules:
+  - DST-PORT,3478,DIRECT
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,httpdns,REJECT
