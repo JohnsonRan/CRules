@@ -108,6 +108,7 @@ proxy-groups:
 
 rules:
   - DST-PORT,3478,DIRECT
+  - IP-CIDR,95.161.76.100/31,REJECT,no-resolve
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,httpdns,REJECT
