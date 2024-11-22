@@ -5,6 +5,9 @@ fallback: &fallback {type: fallback, url: https://latency-test.skk.moe/endpoint,
 # 这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://latency-test.skk.moe/endpoint", interval: 600}}
 
+proxies:
+  - {name: LAN, type: direct, udp: true, interface-name: lan}
+
 # https://hub.docker.com/r/xream/sub-store
 proxy-providers:
   Sub-Store:
@@ -107,7 +110,8 @@ proxy-groups:
   - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW"}
 
 rules:
-  - DST-PORT,3478,DIRECT
+  - DST-PORT,3478/19302,DIRECT
+  - RULE-SET,lan_ip,LAN,no-resolve
   - IP-CIDR,95.161.76.100/31,REJECT,no-resolve
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
@@ -231,3 +235,6 @@ rule-providers:
   apple_proxy:
     <<: *classicaltxt
     url: "https://raw.e11z.net/github.com/Repcz/Tool/raw/X/Surge/Rules/AppleProxy.list"
+  lan_ip:
+    <<: *mrsip
+    url: "https://raw.e11z.net/github.com/ForestL18/rules-dat/raw/mihomo/geo/ipcidr/private-ip.mrs"
