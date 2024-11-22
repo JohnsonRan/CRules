@@ -2,6 +2,7 @@
 pr: &pr {type: select, proxies: [节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
 url-test: &url-test {type: url-test, url: https://latency-test.skk.moe/endpoint, interval: 300, include-all: true, exclude-filter: "LAN"}
 fallback: &fallback {type: fallback, url: https://latency-test.skk.moe/endpoint, interval: 300, include-all: true, exclude-filter: "LAN"}
+load-balance: &load-balance {type: load-balance, url: https://latency-test.skk.moe/endpoint, interval: 300, include-all: true, strategy: sticky-sessions, exclude-filter: "LAN"}
 # 这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://latency-test.skk.moe/endpoint", interval: 600}}
 
@@ -102,12 +103,12 @@ proxy-groups:
   - {name: MATCH, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Failover.png, <<: *pr}
 
 # 分隔,下面是地区分组
-  - {name: 🇭🇰 香港, <<: *url-test, filter: "🇭🇰|香港|HK|Hong"}
-  - {name: 🇺🇸 美国, <<: *url-test, filter: "🇺🇸|美国|US|United States"}
-  - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
-  - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
-  - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
-  - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW|LAN"}
+  - {name: 🇭🇰 香港, <<: *load-balance, filter: "🇭🇰|香港|HK|Hong"}
+  - {name: 🇺🇸 美国, <<: *load-balance, filter: "🇺🇸|美国|US|United States"}
+  - {name: 🇸🇬 新加坡, <<: *load-balance, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
+  - {name: 🇯🇵 日本, <<: *load-balance, filter: "🇯🇵|日本|东京|JP|Japan"}
+  - {name: 🇼🇸 台湾, <<: *load-balance, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
+  - {name: 其他, <<: *load-balance, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
   - DST-PORT,3478/19302,DIRECT
