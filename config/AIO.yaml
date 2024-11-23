@@ -115,6 +115,10 @@ rules:
   - DST-PORT,3478/19302,DIRECT
   - RULE-SET,lan_ip,LAN,no-resolve
   - IP-CIDR,95.161.76.100/31,REJECT,no-resolve
+  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-ad-[a-zA-Z0-9-]{1,63}\.byteimg\.com$,REJECT
+  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-be-pack-sign\.pglstatp-toutiao\.com$,REJECT
+  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-normal\.zijieapi\.com$,REJECT
+  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-normal-[a-zA-Z0-9-]{1,63}\.zijieapi\.com$,REJECT
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,httpdns,REJECT
