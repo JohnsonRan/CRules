@@ -73,7 +73,7 @@ dns:
       - 'https://9.9.9.9/dns-query'
   proxy-server-nameserver:
       - 101.226.4.6 #360
-      - 180.184.1.1 #bytedance
+      - 223.5.5.5
   nameserver-policy:
     '*': 127.0.0.1#lo
     '+.lan': 127.0.0.1#lo
@@ -87,6 +87,7 @@ dns:
 proxy-groups:
   - {name: 节点选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
   - {name: 自动选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Omission.png, <<: *fallback}
+  - {name: Speedtest, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
   - {name: Emby, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Emby.png, <<: *pr}
   - {name: AI, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/AI.png, <<: *pr}
   - {name: Apple, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [🇺🇸 美国, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, DIRECT]}
@@ -119,6 +120,7 @@ rules:
   - RULE-SET,httpdns,REJECT
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
+  - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
   - RULE-SET,apple,DIRECT
   - RULE-SET,biliintl,节点选择
@@ -172,7 +174,7 @@ rule-providers:
     url: "https://raw.e11z.net/github.com/ForestL18/rules-dat/raw/mihomo/geo/domain/ai-domain.mrs"
   ADs_merged:
     <<: *mrs
-    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ADs_merged.mrs"
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_merged.mrs"
   biliintl:
     <<: *mrs
     url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs"
@@ -239,3 +241,6 @@ rule-providers:
   lan_ip:
     <<: *mrsip
     url: "https://raw.e11z.net/github.com/ForestL18/rules-dat/raw/mihomo/geo/ipcidr/private-ip.mrs"
+  speedtest:
+    <<: *domaintxt
+    url: "https://ruleset.skk.moe/Clash/domainset/speedtest.txt"
