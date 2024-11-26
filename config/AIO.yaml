@@ -83,6 +83,9 @@ dns:
     'rule-set:cn_site,apple':
       - 122.112.208.1 #huawei
       - 101.226.4.6
+ntp:
+  enable: true
+  write-to-system: true
 
 proxy-groups:
   - {name: 节点选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
