@@ -90,7 +90,7 @@ ntp:
 proxy-groups:
   - {name: 节点选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Global.png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
   - {name: 自动选择, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Omission.png, <<: *fallback}
-  - {name: Speedtest, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
+  - {name: Speedtest, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/SpeedTest.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
   - {name: Emby, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Emby.png, <<: *pr}
   - {name: AI, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/AI.png, <<: *pr}
   - {name: Apple, icon: https://raw.e11z.net/github.com/Vbaethon/HOMOMIX/raw/main/Icon/Color/Large/Apple_black.png, type: select, proxies: [🇺🇸 美国, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, DIRECT]}
