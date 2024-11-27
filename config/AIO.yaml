@@ -124,10 +124,10 @@ rules:
   - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-normal-[a-zA-Z0-9-]{1,63}\.zijieapi\.com$,REJECT
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
-  - RULE-SET,httpdns,REJECT
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
   - RULE-SET,ADs_AWAvenue,REJECT
+  - RULE-SET,httpdns,REJECT
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
   - RULE-SET,apple,DIRECT
@@ -253,5 +253,5 @@ rule-providers:
     <<: *mrsip
     url: "https://raw.e11z.net/github.com/ForestL18/rules-dat/raw/mihomo/geo/ipcidr/private-ip.mrs"
   speedtest:
-    <<: *domaintxt
-    url: "https://ruleset.skk.moe/Clash/domainset/speedtest.txt"
+    <<: *mrs
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/speedtest.mrs"

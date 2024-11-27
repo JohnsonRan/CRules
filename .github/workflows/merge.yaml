@@ -22,7 +22,7 @@ jobs:
         chmod +x mihomo
         sudo mv mihomo /usr/local/bin/
 
-    - name: Download and process lists
+    - name: Convert AdRules and hagezi
       run: |
         curl https://adrules.top/adrules_domainset.txt -o adrules_domainset.txt
         curl https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi.txt -o multi.txt
@@ -30,16 +30,20 @@ jobs:
         awk '/^\+\./ {gsub(/^\+/, "*"); print}' combined.txt > exclude_list.txt
         awk 'NR==FNR {exclude[$0]; next} !($0 in exclude)' exclude_list.txt combined.txt | sort | uniq > ADs_merged_temp.txt
         mihomo convert-ruleset domain text ADs_merged_temp.txt ADs_merged.mrs
-        mv ADs_merged.mrs rules/
 
     - name: Convert AWAvenue rules
       run: |
         wget https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
         mihomo convert-ruleset domain yaml AWAvenue-Ads-Rule-Clash.yaml ADs_AWAvenue.mrs
-        mv ADs_AWAvenue.mrs rules/
+
+    - name: more mrs
+      run: |
+        wget https://ruleset.skk.moe/Clash/domainset/speedtest.txt
+        mihomo convert-ruleset domain text speedtest.txt speedtest.mrs
 
     - name: Commit and push changes
       run: |
+        mv *.mrs rules/
         CURRENT_TIME=$(date +"%Y-%m-%d %H:%M")
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
