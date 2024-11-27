@@ -127,6 +127,7 @@ rules:
   - RULE-SET,httpdns,REJECT
   - RULE-SET,custom_reject,REJECT
   - RULE-SET,ADs_merged,REJECT
+  - RULE-SET,ADs_AWAvenue,REJECT
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
   - RULE-SET,apple,DIRECT
@@ -182,6 +183,9 @@ rule-providers:
   ADs_merged:
     <<: *mrs
     url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_merged.mrs"
+  ADs_AWAvenue:
+    <<: *mrs
+    url: "https://raw.e11z.net/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_AWAvenue.mrs"
   biliintl:
     <<: *mrs
     url: "https://raw.e11z.net/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs"
