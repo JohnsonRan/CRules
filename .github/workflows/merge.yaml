@@ -17,10 +17,9 @@ jobs:
 
     - name: Install mihomo
       run: |
-        curl -skLo mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/v1.18.10/mihomo-linux-amd64-v1.18.10.gz
-        gzip -d mihomo.gz
-        chmod +x mihomo
-        sudo mv mihomo /usr/local/bin/
+        version=$(curl -skL https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/version.txt)
+        curl -skLo mihomo.deb https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-$version.deb
+        sudo dpkg -i mihomo.deb
 
     - name: Convert AdRules and hagezi
       run: |
