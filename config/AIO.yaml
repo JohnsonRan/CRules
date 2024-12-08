@@ -26,7 +26,8 @@ external-ui-name: zashboard
 external-controller: 0.0.0.0:9090
 external-ui-url: https://raw.e11z.net/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 
-disable-keep-alive: true
+keep-alive-idle: 600
+keep-alive-interval: 15
 
 profile:
   store-selected: true
