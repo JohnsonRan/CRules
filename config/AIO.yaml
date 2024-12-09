@@ -112,7 +112,7 @@ proxy-groups:
   - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
   - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
   - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
-  - {name: 其他, <<: *url-test, exclude-filter: "HK|US|SG|JP|TW|LAN"}
+  - {name: 其他, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
   - DST-PORT,3478/19302,DIRECT
