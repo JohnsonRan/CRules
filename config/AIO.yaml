@@ -4,7 +4,7 @@ url-test: &url-test {type: url-test, url: https://latency-test.lab.skk.moe/endpo
 fallback: &fallback {type: fallback, url: https://latency-test.lab.skk.moe/endpoint, interval: 300, include-all: true, exclude-filter: "LAN"}
 load-balance: &load-balance {type: load-balance, url: https://latency-test.lab.skk.moe/endpoint, interval: 300, include-all: true, strategy: sticky-sessions, exclude-filter: "LAN"}
 # 这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: "https://latency-test.lab.skk.moe/endpoint", interval: 300}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://latency-test.lab.skk.moe/endpoint, interval: 300}}
 
 proxies:
   - {name: LAN, type: direct, udp: true, interface-name: br-lan}
@@ -46,14 +46,12 @@ sniffer:
     QUIC:
       ports: [443, 8443]
   skip-domain:
-    - 'Mijia Cloud'
-    - '+.push.apple.com'
+    - "Mijia Cloud"
+    - "+.push.apple.com"
 
 tun:
   enable: true
   stack: mixed
-  device: JRAN
-  endpoint-independent-nat: true
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
@@ -64,25 +62,22 @@ dns:
   respect-rules: true
   listen: 0.0.0.0:1053
   enhanced-mode: redir-host
-  fake-ip-filter:
-    - '+.lan'
-    - '+.local'
-    - '+.market.xiaomi.com'
   nameserver:
-      - 'https://208.67.222.2/dns-query'
-      - 'https://9.9.9.9/dns-query'
+    - "https://208.67.222.2/dns-query"
+    - "https://9.9.9.9/dns-query"
   proxy-server-nameserver:
-      - 101.226.4.6 #360
-      - 223.5.5.5
+    - 101.226.4.6 #360
+    - 223.5.5.5
   nameserver-policy:
-    '*': 127.0.0.1#lo
-    '+.lan': 127.0.0.1#lo
-    '+.arpa': 127.0.0.1#lo
-    '+.local': 127.0.0.1#lo
-    '+.ts.net': 127.0.0.1#tailscale0
-    'rule-set:cn_site,apple':
+    "*": 127.0.0.1#lo
+    "+.lan": 127.0.0.1#lo
+    "+.arpa": 127.0.0.1#lo
+    "+.local": 127.0.0.1#lo
+    "+.ts.net": 127.0.0.1#tailscale0
+    "rule-set:cn_site,apple":
       - 122.112.208.1 #huawei
       - 101.226.4.6
+
 ntp:
   enable: true
   write-to-system: true
