@@ -115,6 +115,7 @@ proxy-groups:
   - {name: 其他, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
+  - DST-PORT,6881,REJECT #FUCK WPS
   - DST-PORT,3478/19302,DIRECT
   - RULE-SET,lan_ip,LAN,no-resolve
   - IP-CIDR,95.161.76.100/31,REJECT,no-resolve
