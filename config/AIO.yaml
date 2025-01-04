@@ -86,7 +86,7 @@ proxy-groups:
   - {name: 节点选择, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
   - {name: 自动选择, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/lightning(2).png, <<: *fallback}
   - {name: Speedtest, icon: https://raw.e11z.net/github.com/lige47/QuanX-icon-rule/raw/main/icon/speedtest.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
-  - {name: Emby, icon: https://raw.e11z.net/github.com/lige47/QuanX-icon-rule/raw/main/icon/emby.png, <<: *pr}
+  - {name: Emby, icon: https://raw.e11z.net/github.com/lige47/QuanX-icon-rule/raw/main/icon/emby.png, type: select, proxies: [低倍率, 节点选择, DIRECT]}
   - {name: AI, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/ChatGPT-green.png, <<: *pr}
   - {name: Apple, icon: https://raw.e11z.net/github.com/lige47/QuanX-icon-rule/raw/main/icon/apple.png, type: select, proxies: [🇺🇸 美国, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, DIRECT]}
   - {name: Github, icon: https://raw.e11z.net/github.com/lige47/QuanX-icon-rule/raw/main/icon/github.png, <<: *pr}
@@ -107,13 +107,13 @@ proxy-groups:
   - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
   - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
   - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
+  - {name: 低倍率, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *load-balance, filter: "(?i)(0\\.\\d+)"}
   - {name: 其他, icon: https://raw.e11z.net/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
   - DST-PORT,6881,REJECT #FUCK WPS
   - DST-PORT,3478/19302,DIRECT
   - RULE-SET,lan_ip,LAN,no-resolve
-  - IP-CIDR,95.161.76.100/31,REJECT,no-resolve
   - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-ad-[a-zA-Z0-9-]{1,63}\.byteimg\.com$,REJECT
   - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-be-pack-sign\.pglstatp-toutiao\.com$,REJECT
   - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-normal\.zijieapi\.com$,REJECT
