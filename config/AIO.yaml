@@ -27,7 +27,7 @@ external-controller: 0.0.0.0:9090
 external-ui-url: https://raw.e11z.net/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 
 keep-alive-idle: 600
-keep-alive-interval: 15
+keep-alive-interval: 60
 
 profile:
   store-selected: true
@@ -113,10 +113,6 @@ rules:
   - DST-PORT,6881,REJECT #FUCK WPS
   - DST-PORT,3478/19302,DIRECT
   - RULE-SET,lan_ip,LAN,no-resolve
-  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-ad-[a-zA-Z0-9-]{1,63}\.byteimg\.com$,REJECT
-  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-be-pack-sign\.pglstatp-toutiao\.com$,REJECT
-  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-normal\.zijieapi\.com$,REJECT
-  - DOMAIN-REGEX,^[a-zA-Z0-9-]{1,63}-normal-[a-zA-Z0-9-]{1,63}\.zijieapi\.com$,REJECT
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,custom_reject,REJECT
