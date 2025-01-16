@@ -142,7 +142,7 @@ rules:
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,bahamut,巴哈姆特
   - RULE-SET,emby,Emby
-  - DOMAIN-SUFFIX,niceduck.lol.Emby
+  - DOMAIN-SUFFIX,niceduck.lol,Emby
   - RULE-SET,cn_site,DIRECT
   - RULE-SET,cn_ip,DIRECT
   - MATCH,MATCH
