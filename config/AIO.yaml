@@ -61,9 +61,7 @@ dns:
   ipv6: false
   respect-rules: true
   listen: 0.0.0.0:1053
-  enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.1/8
-  fake-ip-filter: ["*", "*.lan", "*.local", "+.market.xiaomi.com", "*.bilivideo.com"]
+  enhanced-mode: redir-host
   nameserver:
     - "https://208.67.222.2/dns-query"
     - "https://9.9.9.9/dns-query"
