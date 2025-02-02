@@ -16,7 +16,7 @@ proxy-providers:
     url: "http://172.16.1.50:3001/D2UhuYViWtqwddacM4ss/download/collection/AIO"
 
 mixed-port: 7890
-ipv6: false
+ipv6: true
 log-level: warning
 allow-lan: true
 unified-delay: true
@@ -93,10 +93,8 @@ proxy-groups:
   - {name: Google, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/google(1).png, <<: *pr}
   - {name: YouTube, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/youtube.png, <<: *pr}
   - {name: Tracker, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/direct.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
-  - {name: 流媒体, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/netflix(red).png, <<: *pr}
   - {name: Porns, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/yuyanyun.png, <<: *pr}
   - {name: Bilibili, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/bilibili(1).png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
-  - {name: 巴哈姆特, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/bahamute.png, type: select, proxies: [🇼🇸 台湾, DIRECT]}
   - {name: Microsoft, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/microsoft.png, <<: *pr}
   - {name: MATCH, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/shutiao.png, <<: *pr}
 
@@ -106,7 +104,7 @@ proxy-groups:
   - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
   - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
   - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
-  - {name: 低倍率, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *load-balance, filter: "(?i)(0\\.\\d+)"}
+  - {name: 低倍率, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *fallback, filter: "(?i)(0\\.\\d+)"}
   - {name: 其他, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
@@ -128,19 +126,16 @@ rules:
   - RULE-SET,youtube,YouTube
   - RULE-SET,google_site,Google
   - RULE-SET,google_ip,Google
-  - RULE-SET,netflix_site,流媒体
-  - RULE-SET,netflix_ip,流媒体
-  - RULE-SET,primevideo,流媒体
-  - RULE-SET,disney,流媒体
   - RULE-SET,category-porn,Porns
   - RULE-SET,bilibili,Bilibili
   - RULE-SET,tg_site,Telegram
   - RULE-SET,tg_ip,Telegram
   - RULE-SET,github,Github
   - RULE-SET,microsoft,Microsoft
-  - RULE-SET,bahamut,巴哈姆特
+  - RULE-SET,bahamut,🇼🇸 台湾
   - RULE-SET,emby,Emby
   - DOMAIN-SUFFIX,niceduck.lol,Emby
+  - DOMAIN-KEYWORD,aikan,Emby
   - RULE-SET,cn_site,DIRECT
   - RULE-SET,cn_ip,DIRECT
   - MATCH,MATCH
@@ -193,18 +188,6 @@ rule-providers:
   google_ip:
     <<: *mrsip
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/google.mrs"
-  netflix_site:
-    <<: *mrs
-    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/netflix.mrs"
-  netflix_ip:
-    <<: *mrsip
-    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/netflix.mrs"
-  primevideo:
-    <<: *mrs
-    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/primevideo.mrs"
-  disney:
-    <<: *mrs
-    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/disney.mrs"
   category-porn:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-porn.mrs"
