@@ -1,0 +1,85 @@
+global {
+    tproxy_port: 12345
+    tproxy_port_protect: true
+    pprof_port: 0
+    so_mark_from_dae: 0
+    log_level: info
+    disable_waiting_network: false
+    enable_local_tcp_fast_redirect: true
+    lan_interface: br-lan,pppoe-wan
+    wan_interface: auto
+    auto_config_kernel_parameter: true
+    tcp_check_url: 'https://www.gstatic.com,1.1.1.1'
+    tcp_check_http_method: HEAD
+    udp_check_dns: 'dns.google:53,1.1.1.1'
+    check_interval: 30s
+    check_tolerance: 50ms
+    dial_mode: domain
+    allow_insecure: false
+    sniffing_timeout: 100ms
+    tls_implementation: tls
+    utls_imitate: chrome_auto
+    mptcp: true
+    bandwidth_max_tx: '200 mbps' 
+    bandwidth_max_rx: '1.2 gbps' 
+}
+subscription {
+    substore: 'https-file://some-sub-url'
+}
+dns {
+    ipversion_prefer: 4
+    fixed_domain_ttl {
+        sweet.521331.xyz: 0
+    }
+    upstream {
+        ihtw: 'https://cool.ihtw.moe:6643/ihtw'
+    }
+    routing {
+        request {
+            qname(geosite:category-ads-all) -> reject
+            qname(geosite:httpdns) -> reject
+            qtype(https) -> reject
+            fallback: ihtw
+        }
+    }
+}
+group {
+    HK {
+        filter: name(keyword: 'HK')
+        policy: min_moving_avg
+    }
+    JP {
+        filter: name(keyword: 'JP')
+        policy: min_moving_avg
+    }
+    SG {
+        filter: name(keyword: 'SG')
+        policy: min_moving_avg
+    }
+    TW {
+        filter: name(keyword: 'TW')
+        policy: min_moving_avg
+    }
+    US {
+        filter: name(keyword: 'US')
+        policy: min_moving_avg
+    }
+}
+# https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/routing.md
+# https://github.com/daeuniverse/dae/blob/main/example.dae
+routing {
+    pname(tailscaled,dnsmasq) -> direct
+    dip(224.0.0.0/3, 'ff00::/8') -> direct
+    dip(geoip:private) -> direct
+    l4proto(udp) && dport(443) -> block 
+    dport(6881) -> block
+    dport(3478,19302) -> direct
+    domain(geosite:apple-update,geosite:win-update,geosite:category-games@cn) -> direct
+    domain(geosite:apple-cn) -> direct
+    domain(geosite:apple) -> US
+    dip(geoip:telegram) -> SG
+    domain(geosite:telegram) -> SG
+    domain(geosite:cn) -> direct
+    dip(geoip:cn) -> direct
+    fallback: HK
+}
