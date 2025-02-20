@@ -23,6 +23,7 @@ global {
     bandwidth_max_tx: '200 mbps' 
     bandwidth_max_rx: '1.2 gbps' 
 }
+# some-sub-url 替换为你的Base64订阅地址
 subscription {
     substore: 'https-file://some-sub-url'
 }
