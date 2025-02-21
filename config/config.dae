@@ -35,10 +35,12 @@ dns {
     upstream {
         ihtw: 'https://cool.ihtw.moe:6643/ihtw'
         local: 'udp://127.0.0.1:53'
+        tsnet: 'udp://100.100.100.100:53'
     }
     routing {
         request {
             qtype(https) -> reject
+            qname(suffix:ts.net) -> tsnet
             qname(
                 suffix:local,
                 suffix:lan
