@@ -34,12 +34,14 @@ dns {
     }
     upstream {
         ihtw: 'https://cool.ihtw.moe:6643/ihtw'
+        local: 'udp://127.0.0.1:53'
     }
     routing {
         request {
             qname(geosite:category-ads-all) -> reject
             qname(geosite:httpdns) -> reject
             qtype(https) -> reject
+            qname(suffix:local,suffix:lan) -> local
             fallback: ihtw
         }
     }
@@ -72,7 +74,7 @@ routing {
     pname(tailscaled,dnsmasq) -> direct
     dip(224.0.0.0/3, 'ff00::/8') -> direct
     dip(geoip:private) -> direct
-    l4proto(udp) && dport(443) -> block 
+    l4proto(udp) && dport(443) -> block
     dport(6881) -> block
     dport(3478,19302) -> direct
     domain(geosite:apple-update,geosite:win-update,geosite:category-games@cn) -> direct
