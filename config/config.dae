@@ -38,10 +38,11 @@ dns {
     }
     routing {
         request {
-            qname(geosite:category-ads-all) -> reject
-            qname(geosite:httpdns) -> reject
             qtype(https) -> reject
-            qname(suffix:local,suffix:lan) -> local
+            qname(
+                suffix:local,
+                suffix:lan
+                ) -> local
             fallback: ihtw
         }
     }
@@ -75,10 +76,18 @@ routing {
     dip(224.0.0.0/3, 'ff00::/8') -> direct
     dip(geoip:private) -> direct
     l4proto(udp) && dport(443) -> block
+    domain(
+        geosite:category-ads-all,
+        geosite:httpdns
+        ) -> block
     dport(6881) -> block
     dport(3478,19302) -> direct
-    domain(geosite:apple-update,geosite:win-update,geosite:category-games@cn) -> direct
-    domain(geosite:apple-cn) -> direct
+    domain(
+        geosite:apple-update,
+        geosite:apple-cn,
+        geosite:win-update,
+        geosite:category-games@cn
+        ) -> direct
     domain(geosite:apple) -> US
     dip(geoip:telegram) -> SG
     domain(geosite:telegram) -> SG
