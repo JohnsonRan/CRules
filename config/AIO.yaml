@@ -138,6 +138,7 @@ rules:
   - RULE-SET,emby,Emby
   - DOMAIN-SUFFIX,niceduck.lol,Emby
   - DOMAIN-KEYWORD,aikan,Emby
+  - RULE-SET,gfwlist,节点选择
   - RULE-SET,cn_site,DIRECT
   - RULE-SET,cn_ip,DIRECT
   - MATCH,MATCH
@@ -232,3 +233,6 @@ rule-providers:
   speedtest:
     <<: *mrs
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/speedtest.mrs"
+  gfwlist:
+    <<: *mrs
+    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/gfw.mrs"

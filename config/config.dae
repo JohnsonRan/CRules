@@ -35,12 +35,12 @@ dns {
     upstream {
         ihtw: 'https://cool.ihtw.moe:6643/ihtw'
         local: 'udp://127.0.0.1:53'
-        tsnet: 'udp://100.100.100.100:53'
+	tsnet: 'udp://100.100.100.100:53'
     }
     routing {
         request {
             qtype(https) -> reject
-            qname(suffix:ts.net) -> tsnet
+	    qname(suffix:ts.net) -> tsnet
             qname(
                 suffix:local,
                 suffix:lan
@@ -93,6 +93,7 @@ routing {
     domain(geosite:apple) -> US
     dip(geoip:telegram) -> SG
     domain(geosite:telegram) -> SG
+    domain(geosite:gfw) -> HK
     domain(geosite:cn) -> direct
     dip(geoip:cn) -> direct
     fallback: HK
