@@ -84,8 +84,8 @@ ntp:
   write-to-system: true
 
 proxy-groups:
-  - {name: 节点选择, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自动选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
-  - {name: 自动选择, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/lightning(2).png, <<: *fallback}
+  - {name: 节点选择, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自建, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+  - {name: 自建, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/lightning(2).png, type: select, include-all-proxies: true, exclude-filter: "LAN"}
   - {name: Speedtest, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/speedtest.png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
   - {name: Emby, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/emby.png, type: select, proxies: [低倍率, 节点选择, DIRECT]}
   - {name: AI, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/ChatGPT-green.png, <<: *pr}
@@ -102,10 +102,10 @@ proxy-groups:
 
 # 分隔,下面是地区分组
   - {name: 🇭🇰 香港, <<: *url-test, filter: "🇭🇰|香港|HK|Hong"}
-  - {name: 🇺🇸 美国, <<: *url-test, filter: "🇺🇸|美国|US|United States"}
-  - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore"}
+  - {name: 🇺🇸 美国, <<: *url-test, filter: "🇺🇸|美国|US|United States", include-all: true}
+  - {name: 🇸🇬 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|SG|Singapore"}
   - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
-  - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
+  - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Taiwan"}
   - {name: 低倍率, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *fallback, filter: "(?i)(0\\.\\d+)"}
   - {name: 其他, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all-providers: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
