@@ -1,8 +1,8 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
-url-test: &url-test {type: url-test, url: https://www.gstatic.com/generate_204, interval: 300, include-all: true, exclude-filter: "LAN"}
-fallback: &fallback {type: fallback, url: https://www.gstatic.com/generate_204, interval: 300, include-all: true, exclude-filter: "LAN"}
-load-balance: &load-balance {type: load-balance, url: https://www.gstatic.com/generate_204, interval: 300, include-all: true, strategy: sticky-sessions, exclude-filter: "LAN"}
+url-test: &url-test {type: url-test, url: https://www.gstatic.com/generate_204, interval: 300, include-all-providers: true, exclude-filter: "LAN"}
+fallback: &fallback {type: fallback, url: https://www.gstatic.com/generate_204, interval: 300, include-all-providers: true, exclude-filter: "LAN"}
+load-balance: &load-balance {type: load-balance, url: https://www.gstatic.com/generate_204, interval: 300, include-all-providers: true, strategy: sticky-sessions, exclude-filter: "LAN"}
 # 这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 300}}
 
@@ -107,7 +107,7 @@ proxy-groups:
   - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan"}
   - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan"}
   - {name: 低倍率, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *fallback, filter: "(?i)(0\\.\\d+)"}
-  - {name: 其他, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
+  - {name: 其他, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all-providers: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
   - DST-PORT,6881,REJECT #FUCK WPS
