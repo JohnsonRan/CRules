@@ -33,7 +33,7 @@ dns {
         sweet.521331.xyz: 0
     }
     upstream {
-        ihtw: 'https://cool.ihtw.moe:6643/ihtw'
+        ihtw: 'https://101.34.254.32/ihtw'
         local: 'udp://127.0.0.1:53'
 	tsnet: 'udp://100.100.100.100:53'
     }

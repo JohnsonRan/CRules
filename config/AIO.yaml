@@ -63,7 +63,7 @@ dns:
   listen: 0.0.0.0:1053
   enhanced-mode: redir-host
   nameserver:
-    - "https://cool.ihtw.moe:6643/ihtw" # mine,use at ur own risk!
+    - "https://101.34.254.32/ihtw" # mine,use at ur own risk!
 #  nameserver:
 #    - "https://208.67.222.2/dns-query"
 #    - "https://9.9.9.9/dns-query"
