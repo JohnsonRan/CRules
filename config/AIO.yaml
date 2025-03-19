@@ -83,6 +83,10 @@ ntp:
   enable: true
   write-to-system: true
 
+experimental:
+  quic-go-disable-gso: false
+  quic-go-disable-ecn: false
+
 proxy-groups:
   - {name: 节点选择, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自建, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
   - {name: 自建, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/lightning(2).png, type: select, include-all-proxies: true, exclude-filter: "LAN"}
