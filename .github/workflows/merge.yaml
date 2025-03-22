@@ -21,11 +21,11 @@ jobs:
         curl -skLo mihomo.deb https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-$version.deb
         sudo dpkg -i mihomo.deb
 
-    - name: Convert AdRules and hagezi
+    - name: Convert AdRules and oisd
       run: |
         curl https://adrules.top/adrules_domainset.txt -o adrules_domainset.txt
-        curl https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi.txt -o multi.txt
-        cat adrules_domainset.txt multi.txt | sed '/^#/d' | sort | uniq > combined.txt
+        curl https://small.oisd.nl/domainswild2 -o oisd.txt
+        cat adrules_domainset.txt oisd.txt | sed '/^#/d' | sort | uniq > combined.txt
         awk '/^\+\./ {gsub(/^\+/, "*"); print}' combined.txt > exclude_list.txt
         awk 'NR==FNR {exclude[$0]; next} !($0 in exclude)' exclude_list.txt combined.txt | sort | uniq > ADs_merged_temp.txt
         mihomo convert-ruleset domain text ADs_merged_temp.txt ADs_merged.mrs
