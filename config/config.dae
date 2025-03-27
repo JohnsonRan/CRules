@@ -23,10 +23,13 @@ global {
     bandwidth_max_tx: '200 mbps' 
     bandwidth_max_rx: '1.2 gbps' 
 }
-# some-sub-url 替换为你的Base64订阅地址
-subscription {
-    substore: 'https-file://some-sub-url'
+node {
+    nikki: "socks5://nikki:79575@127.0.0.1:7890"
 }
+# some-sub-url 替换为你的Base64订阅地址
+#subscription {
+#    substore: 'https-file://some-sub-url'
+#}
 dns {
     ipversion_prefer: 4
     fixed_domain_ttl {
@@ -50,31 +53,14 @@ dns {
     }
 }
 group {
-    HK {
-        filter: name(keyword: 'HK')
-        policy: min_moving_avg
-    }
-    JP {
-        filter: name(keyword: 'JP')
-        policy: min_moving_avg
-    }
-    SG {
-        filter: name(keyword: 'SG')
-        policy: min_moving_avg
-    }
-    TW {
-        filter: name(keyword: 'TW')
-        policy: min_moving_avg
-    }
-    US {
-        filter: name(keyword: 'US')
+    nikki {
         policy: min_moving_avg
     }
 }
 # https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/routing.md
 # https://github.com/daeuniverse/dae/blob/main/example.dae
 routing {
-    pname(tailscaled,dnsmasq) -> direct
+    pname(tailscaled,dnsmasq,mihomo) -> must_direct
     dip(224.0.0.0/3, 'ff00::/8') -> direct
     dip(geoip:private) -> direct
     l4proto(udp) && dport(443) -> block
@@ -90,11 +76,7 @@ routing {
         geosite:win-update,
         geosite:category-games@cn
         ) -> direct
-    domain(geosite:apple) -> US
-    dip(geoip:telegram) -> SG
-    domain(geosite:telegram) -> SG
-    domain(geosite:gfw) -> HK
     domain(geosite:cn) -> direct
     dip(geoip:cn) -> direct
-    fallback: HK
+    fallback: nikki
 }
