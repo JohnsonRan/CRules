@@ -24,7 +24,7 @@ global {
     bandwidth_max_rx: '1.2 gbps' 
 }
 node {
-    nikki: "socks5://nikki:79575@127.0.0.1:7890"
+    nikki: "socks5://127.0.0.1:7890"
 }
 # some-sub-url 替换为你的Base64订阅地址
 #subscription {
