@@ -1,5 +1,5 @@
 # 策略组相关
-pr: &pr {type: select, proxies: [节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+pr: &pr {type: select, proxies: [节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
 url-test: &url-test {type: url-test, url: https://www.gstatic.com/generate_204, interval: 300, include-all-providers: true, exclude-filter: "LAN"}
 fallback: &fallback {type: fallback, url: https://www.gstatic.com/generate_204, interval: 300, include-all-providers: true, exclude-filter: "LAN"}
 load-balance: &load-balance {type: load-balance, url: https://www.gstatic.com/generate_204, interval: 300, include-all-providers: true, strategy: sticky-sessions, exclude-filter: "LAN"}
@@ -90,7 +90,7 @@ experimental:
   quic-go-disable-ecn: false
 
 proxy-groups:
-  - {name: 节点选择, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自建, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, 其他, DIRECT]}
+  - {name: 节点选择, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自建, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国, DIRECT]}
   - {name: 自建, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/lightning(2).png, type: select, include-all-proxies: true, exclude-filter: "LAN"}
   - {name: Speedtest, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/speedtest.png, type: select, proxies: [DIRECT, 节点选择, 🇭🇰 香港, 🇼🇸 台湾, 🇯🇵 日本, 🇸🇬 新加坡, 🇺🇸 美国]}
   - {name: Emby, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/emby.png, type: select, proxies: [节点选择, 低倍率, 🇺🇸 美国, DIRECT]}
@@ -104,6 +104,7 @@ proxy-groups:
   - {name: Porns, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/yuyanyun.png, <<: *pr}
   - {name: Bilibili, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/bilibili(1).png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
   - {name: Microsoft, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/microsoft.png, <<: *pr}
+  - {name: ADBlock, icon: https://github.com/lige47/QuanX-icon-rule/blob/main/icon/ad(6).png, type: select, proxies: [REJECT, DIRECT]}
   - {name: MATCH, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/shutiao.png, <<: *pr}
 
 # 分隔,下面是地区分组
@@ -113,18 +114,17 @@ proxy-groups:
   - {name: 🇯🇵 日本, <<: *url-test, filter: "🇯🇵|日本|JP"}
   - {name: 🇼🇸 台湾, <<: *url-test, filter: "🇹🇼|台湾|TW"}
   - {name: 低倍率, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *fallback, filter: "(?i)(0\\.\\d+)"}
-  - {name: 其他, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all-providers: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
 rules:
-  - DST-PORT,6881,REJECT #FUCK WPS
+  - DST-PORT,6881,ADBlock #FUCK WPS
   - DST-PORT,3478/19302,DIRECT
   - RULE-SET,lan_ip,LAN,no-resolve
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,custom_proxy,节点选择
-  - RULE-SET,custom_reject,REJECT
-  - RULE-SET,ADs_merged,REJECT
-  - RULE-SET,ADs_AWAvenue,REJECT
-  - RULE-SET,httpdns,REJECT
+  - RULE-SET,custom_reject,ADBlock
+  - RULE-SET,ADs_merged,ADBlock
+  - RULE-SET,ADs_AWAvenue,ADBlock
+  - RULE-SET,httpdns,ADBlock
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
   - RULE-SET,apple,DIRECT
