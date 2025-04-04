@@ -104,7 +104,7 @@ proxy-groups:
   - {name: Porns, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/yuyanyun.png, <<: *pr}
   - {name: Bilibili, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/bilibili(1).png, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇼🇸 台湾]}
   - {name: Microsoft, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/microsoft.png, <<: *pr}
-  - {name: ADBlock, icon: https://github.com/lige47/QuanX-icon-rule/blob/main/icon/ad(6).png, type: select, proxies: [REJECT, DIRECT]}
+  - {name: ADBlock, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/ad(6).png, type: select, proxies: [REJECT, DIRECT]}
   - {name: MATCH, icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/shutiao.png, <<: *pr}
 
 # 分隔,下面是地区分组
