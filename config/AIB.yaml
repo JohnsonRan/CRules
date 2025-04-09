@@ -124,6 +124,7 @@ rules:
   - RULE-SET,ADs_merged,ADBlock
   - RULE-SET,ADs_AWAvenue,ADBlock
   - RULE-SET,httpdns,ADBlock
+  - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),ADBlock
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
   - RULE-SET,apple,DIRECT
