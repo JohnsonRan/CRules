@@ -1,4 +1,4 @@
-name: Merge rules
+name: Merge Rules
 
 on:
   schedule:
@@ -23,12 +23,14 @@ jobs:
 
     - name: Convert AdRules and oisd
       run: |
-        curl https://adrules.top/adrules_domainset.txt -o adrules_domainset.txt
-        curl https://big.oisd.nl/domainswild2 -o oisd.txt
-        cat adrules_domainset.txt oisd.txt | sed '/^#/d' | sort | uniq > combined.txt
-        awk '/^\+\./ {gsub(/^\+/, "*"); print}' combined.txt > exclude_list.txt
-        awk 'NR==FNR {exclude[$0]; next} !($0 in exclude)' exclude_list.txt combined.txt | sort | uniq > ADs_merged_temp.txt
-        mihomo convert-ruleset domain text ADs_merged_temp.txt ADs_merged.mrs
+        curl -skL https://adrules.top/adrules_domainset.txt >> rules.txt
+        curl -skL https://big.oisd.nl/domainswild2 >> rules.txt
+        curl -skL https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt >> rules.txt
+        cat rules.txt | sed '/^#/d' > combined_raw.txt
+        sed -E 's/^[\+\*\.]+//g' combined_raw.txt | grep -v '^$' > normalized.txt
+        sort normalized.txt | uniq > unique_domains.txt
+        awk '{print "+." $0}' unique_domains.txt > ADs_merged.txt
+        mihomo convert-ruleset domain text ADs_merged.txt ADs_merged.mrs
 
     - name: Convert AWAvenue rules
       run: |
@@ -42,7 +44,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        mv *.mrs rules/
+        mv {*.mrs,ADs_merged.txt} rules/
         CURRENT_TIME=$(date +"%Y-%m-%d %H:%M")
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
