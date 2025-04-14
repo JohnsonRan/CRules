@@ -31,6 +31,7 @@ jobs:
         sort normalized.txt | uniq > unique_domains.txt
         awk '{print "+." $0}' unique_domains.txt > ADs_merged.txt
         mihomo convert-ruleset domain text ADs_merged.txt ADs_merged.mrs
+        sed -i 's/+./DOMAIN-SUFFIX,/g' ADs_merged.txt
 
     - name: Convert AWAvenue rules
       run: |
