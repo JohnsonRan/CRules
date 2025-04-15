@@ -123,7 +123,6 @@ rules:
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,custom_reject,ADBlock
   - RULE-SET,ADs_merged,ADBlock
-  - RULE-SET,ADs_AWAvenue,ADBlock
   - RULE-SET,httpdns,ADBlock
   - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),ADBlock
   - RULE-SET,speedtest,Speedtest
@@ -180,9 +179,6 @@ rule-providers:
   ADs_merged:
     <<: *mrs
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_merged.mrs"
-  ADs_AWAvenue:
-    <<: *mrs
-    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_AWAvenue.mrs"
   biliintl:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs"

@@ -21,22 +21,9 @@ jobs:
         curl -skLo mihomo.deb https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-$version.deb
         sudo dpkg -i mihomo.deb
 
-    - name: Convert AdRules and oisd
+    - name: Convert AD Rules into mrs
       run: |
-        curl -skL https://adrules.top/adrules_domainset.txt >> rules.txt
-        curl -skL https://big.oisd.nl/domainswild2 >> rules.txt
-        curl -skL https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt >> rules.txt
-        cat rules.txt | sed '/^#/d' > combined_raw.txt
-        sed -E 's/^[\+\*\.]+//g' combined_raw.txt | grep -v '^$' > normalized.txt
-        sort normalized.txt | uniq > unique_domains.txt
-        awk '{print "+." $0}' unique_domains.txt > ADs_merged.txt
-        mihomo convert-ruleset domain text ADs_merged.txt ADs_merged.mrs
-        sed -i 's/+./DOMAIN-SUFFIX,/g' ADs_merged.txt
-
-    - name: Convert AWAvenue rules
-      run: |
-        wget https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
-        mihomo convert-ruleset domain yaml AWAvenue-Ads-Rule-Clash.yaml ADs_AWAvenue.mrs
+        curl -skL https://github.com/JohnsonRan/CRules/raw/master/rules/convert.sh | bash
 
     - name: more mrs
       run: |
