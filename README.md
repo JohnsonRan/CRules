@@ -12,6 +12,7 @@ https://github.com/JohnsonRan/CRules/raw/master/config/AIB.yaml
 - oisd big
 - reject-list (Loyalsoldier/v2ray-rules-dat)
 - AWAvenue
+- Adblock4limbo
 
 Mihomo 使用:
 ```shell
