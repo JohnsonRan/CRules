@@ -23,7 +23,7 @@ jobs:
 
     - name: Convert AD Rules into mrs
       run: |
-        curl -skL https://github.com/JohnsonRan/CRules/raw/master/rules/convert.sh | bash
+        bash scripts/convert.sh
 
     - name: more mrs
       run: |
