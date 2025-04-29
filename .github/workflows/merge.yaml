@@ -36,7 +36,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        mv {*.mrs,ADs_merged.txt,AIs,merged.txt} rules/
+        mv {*.mrs,ADs_merged.txt,AIs_merged.txt} rules/
         CURRENT_TIME=$(date +"%Y-%m-%d %H:%M")
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'

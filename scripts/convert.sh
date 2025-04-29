@@ -76,7 +76,7 @@ generate_ais_merged() {
       }
   }' filtered_domains.txt >AIs_merged.txt
 
-  mihomo convert-ruleset domain text AIs_merged.txt ADs_merged.mrs
+  mihomo convert-ruleset domain text AIs_merged.txt AIs_merged.mrs
 
   # Surge compatible
   sed -i 's/+./DOMAIN-SUFFIX,/g' AIs_merged.txt
