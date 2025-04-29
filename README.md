@@ -23,3 +23,20 @@ Surge 等代理软件使用:
 ```shell
 https://github.com/JohnsonRan/CRules/raw/mihomo/rules/ADs_merged.txt
 ```
+
+### AIs_merged
+合并去重以下AI规则:
+- ForestL18/rules-dat
+- MetaCubeX/meta-rules-dat
+- Sukka's Ruleset
+- DustinWin/ruleset_geodata
+
+Mihomo 使用:
+```shell
+https://github.com/JohnsonRan/CRules/raw/mihomo/rules/AIs_merged.mrs
+```
+
+Surge 等代理软件使用:
+```shell
+https://github.com/JohnsonRan/CRules/raw/mihomo/rules/AIs_merged.txt
+```

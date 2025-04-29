@@ -174,7 +174,7 @@ rule-providers:
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
   ai:
     <<: *mrs
-    url: "https://raw.ihtw.moe/github.com/ForestL18/rules-dat/raw/mihomo/geo/domain/ai-domain.mrs"
+    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/AIs_merged.mrs"
   ADs_merged:
     <<: *mrs
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_merged.mrs"

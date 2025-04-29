@@ -23,7 +23,11 @@ jobs:
 
     - name: Convert AD Rules into mrs
       run: |
-        bash scripts/convert.sh
+        bash scripts/convert.sh ads
+
+    - name: Convert AI Rules into mrs
+      run: |
+        bash scripts/convert.sh ais
 
     - name: more mrs
       run: |
@@ -32,7 +36,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        mv {*.mrs,ADs_merged.txt} rules/
+        mv {*.mrs,ADs_merged.txt,AIs,merged.txt} rules/
         CURRENT_TIME=$(date +"%Y-%m-%d %H:%M")
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
