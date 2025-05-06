@@ -19,16 +19,10 @@ generate_ads_merged() {
   sort normalized.txt | uniq >unique_domains.txt
 
   # 关键词文件过滤
-  grep -v -f "scripts/exclude-keyword.txt" unique_domains.txt >filtered_domains.txt
+  grep -v -f "scripts/exclude-keyword.txt" unique_domains.txt | grep -v '^DOMAIN-KEYWORD' | grep -v '^DOMAIN' >filtered_domains.txt
 
-  # 处理域名：添加 +. 前缀（DOMAIN-KEYWORD 除外）
-  awk '{
-      if ($0 ~ /^DOMAIN-KEYWORD/) {
-          print $0
-      } else {
-          print "+." $0
-      }
-  }' filtered_domains.txt >ADs_merged.txt
+  # 处理域名：添加 +. 前缀
+  awk '{ print "+." $0 }' filtered_domains.txt >ADs_merged.txt
 
   mihomo convert-ruleset domain text ADs_merged.txt ADs_merged.mrs
 
@@ -65,16 +59,10 @@ generate_ais_merged() {
   sort normalized.txt | uniq >unique_domains.txt
 
   # 关键词文件过滤
-  grep -v -f "scripts/exclude-keyword.txt" unique_domains.txt >filtered_domains.txt
+  grep -v -f "scripts/exclude-keyword.txt" unique_domains.txt | grep -v '^DOMAIN-KEYWORD,' | grep -v '^DOMAIN,' >filtered_domains.txt
 
-  # 处理域名：添加 +. 前缀（DOMAIN-KEYWORD, 和 DOMAIN, 除外）
-  awk '{
-      if ($0 ~ /^DOMAIN-KEYWORD,/ || $0 ~ /^DOMAIN,/) {
-          print $0
-      } else {
-          print "+." $0
-      }
-  }' filtered_domains.txt >AIs_merged.txt
+  # 处理域名：添加 +. 前缀
+  awk '{ print "+." $0 }' filtered_domains.txt >AIs_merged.txt
 
   mihomo convert-ruleset domain text AIs_merged.txt AIs_merged.mrs
 
