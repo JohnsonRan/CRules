@@ -70,8 +70,8 @@ dns:
 #    - "https://208.67.222.2/dns-query"
 #    - "https://9.9.9.9/dns-query"
   proxy-server-nameserver:
-    - 101.226.4.6 #360
     - 223.5.5.5
+    - 101.226.4.6 #360
   nameserver-policy:
     "*": 127.0.0.1#lo
     "+.lan": 127.0.0.1#lo
@@ -116,14 +116,16 @@ proxy-groups:
   - {name: 低倍率, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *fallback, filter: "(?i)(0\\.\\d+)"}
 
 rules:
-  - DST-PORT,6881,ADBlock #FUCK WPS
+  - DST-PORT,6881-6999,ADBlock #FUCK WPS
   - DST-PORT,3478/19302,DIRECT
-  - RULE-SET,lan_ip,LAN,no-resolve
-  - RULE-SET,custom_direct,DIRECT
+  - GEOIP,lan,LAN,no-resolve
   - RULE-SET,custom_proxy,节点选择
   - RULE-SET,custom_reject,ADBlock
+  - RULE-SET,custom_direct,DIRECT
   - RULE-SET,ADs_merged,ADBlock
   - RULE-SET,httpdns,ADBlock
+  - RULE-SET,category-cngames,DIRECT
+  - RULE-SET,win-update,DIRECT
   - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),ADBlock
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
@@ -142,8 +144,6 @@ rules:
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,bahamut,台湾
   - RULE-SET,emby,Emby
-  - DOMAIN-SUFFIX,niceduck.lol,Emby
-  - DOMAIN-KEYWORD,aikan,Emby
   - RULE-SET,gfwlist,节点选择
   - RULE-SET,cn_site,DIRECT
   - RULE-SET,cn_ip,DIRECT
@@ -197,6 +197,9 @@ rule-providers:
   category-porn:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-porn.mrs"
+  category-cngames:
+    <<: *mrs
+    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-games@cn.mrs"
   bilibili:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bilibili.mrs"
@@ -212,6 +215,9 @@ rule-providers:
   microsoft:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft.mrs"
+  win-update:
+    <<: *mrs
+    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/win-update.mrs"
   bahamut:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bahamut.mrs"
@@ -230,9 +236,6 @@ rule-providers:
   apple_proxy:
     <<: *classicaltxt
     url: "https://raw.ihtw.moe/github.com/Repcz/Tool/raw/X/Surge/Rules/AppleProxy.list"
-  lan_ip:
-    <<: *mrsip
-    url: "https://raw.ihtw.moe/github.com/ForestL18/rules-dat/raw/mihomo/geo/ipcidr/private-ip.mrs"
   speedtest:
     <<: *mrs
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/speedtest.mrs"
