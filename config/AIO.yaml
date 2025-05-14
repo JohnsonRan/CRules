@@ -129,7 +129,6 @@ rules:
   - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),ADBlock
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
-  - RULE-SET,apple,DIRECT
   - RULE-SET,biliintl,节点选择
   - RULE-SET,tracker,Tracker
   - RULE-SET,ai,AI
@@ -230,12 +229,9 @@ rule-providers:
   httpdns:
     <<: *mrs 
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-httpdns-cn.mrs"
-  apple:
-    <<: *mrs 
-    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple.mrs"
   apple_proxy:
-    <<: *classicaltxt
-    url: "https://raw.ihtw.moe/github.com/Repcz/Tool/raw/X/Surge/Rules/AppleProxy.list"
+    <<: *mrs
+    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/AppleProxy.mrs"
   speedtest:
     <<: *mrs
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/speedtest.mrs"
