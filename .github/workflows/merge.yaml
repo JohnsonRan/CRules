@@ -32,7 +32,7 @@ jobs:
     - name: more mrs
       run: |
         wget https://ruleset.skk.moe/Clash/domainset/speedtest.txt
-        curl -skL https://github.com/Repcz/Tool/raw/X/Clash/Rules/AppleProxy.list | sed '/^#/d' | sed 's/^DOMAIN,//g' | sed 's/^DOMAIN-SUFFIX,//g' | grep -v PROCESS-NAME | grep -v '^$' | awk '{ print "+." $0 }' >apple.txt
+        curl -skL https://github.com/Repcz/Tool/raw/X/Clash/Rules/AppleProxy.list | sed '/^#/d' | sed 's/^DOMAIN,//g' | sed 's/^DOMAIN-SUFFIX,/+./g' | grep -v PROCESS-NAME | grep -v '^$' >apple.txt
         mihomo convert-ruleset domain text apple.txt AppleProxy.mrs
         mihomo convert-ruleset domain text speedtest.txt speedtest.mrs
 
