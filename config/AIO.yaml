@@ -167,8 +167,8 @@ rule-providers:
     <<: *domain
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/customProxy.yaml"
   custom_reject:
-    <<: *domain
-    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/reject.yaml"
+    <<: *domaintxt
+    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/reject.txt"
   emby:
     <<: *classicaltxt
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
