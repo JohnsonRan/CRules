@@ -126,7 +126,7 @@ rules:
   - RULE-SET,httpdns,ADBlock
   - RULE-SET,category-cngames,DIRECT
   - RULE-SET,win-update,DIRECT
-  - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),ADBlock
+  - AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((RULE-SET,cn_site)))),ADBlock
   - RULE-SET,speedtest,Speedtest
   - RULE-SET,apple_proxy,Apple
   - RULE-SET,biliintl,节点选择
