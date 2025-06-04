@@ -91,8 +91,9 @@ proxy-groups:
   - {name: 节点选择, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/sub(1).png, type: select, proxies: [自动选择, 香港, 台湾, 日本, 新加坡, 美国, 其他, DIRECT]}
   - {name: 自动选择, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/lightning(2).png, <<: *fallback}
   - {name: Speedtest, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/speedtest.png, type: select, proxies: [DIRECT, 节点选择, 香港, 台湾, 日本, 新加坡, 美国]}
-  - {name: Emby, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/emby.png, type: select, proxies: [节点选择, 低倍率, DIRECT]}
+  - {name: Emby, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/emby.png, <<: *pr}
   - {name: AI, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/ChatGPT-green.png, <<: *pr}
+  - {name: Steam, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/steam.png, <<: *pr}
   - {name: Apple, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/apple.png, type: select, proxies: [美国, 香港, 台湾, 日本, 新加坡, DIRECT]}
   - {name: Github, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/github.png, <<: *pr}
   - {name: Telegram, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/telegram(blue1).png, <<: *pr}
@@ -106,11 +107,11 @@ proxy-groups:
   - {name: MATCH, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/shutiao.png, <<: *pr}
 
 # 分隔,下面是地区分组
-  - {name: 香港, <<: *url-test, filter: "🇭🇰|香港|HK|Hong", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/Hongkong(2).png}
-  - {name: 美国, <<: *url-test, filter: "🇺🇸|美国|US|United States", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/US(1).png}
-  - {name: 新加坡, <<: *url-test, filter: "🇸🇬|新加坡|狮|SG|Singapore", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/singapore(2).png}
-  - {name: 日本, <<: *url-test, filter: "🇯🇵|日本|东京|JP|Japan", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/Japan(1).png}
-  - {name: 台湾, <<: *url-test, filter: "🇨🇳|🇹🇼|台湾|TW|Tai|Taiwan", icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/taiwan.png}
+  - {name: 香港, <<: *url-test, filter: "🇭🇰|HK", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/Hongkong(2).png}
+  - {name: 美国, <<: *url-test, filter: "🇺🇸|US", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/US(1).png, include-all: true}
+  - {name: 新加坡, <<: *url-test, filter: "🇸🇬|SG", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/singapore(2).png}
+  - {name: 日本, <<: *url-test, filter: "🇯🇵|JP", icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/Japan(1).png}
+  - {name: 台湾, <<: *url-test, filter: "🇹🇼|TW", icon: https://raw.ihtw.moe/https://github.com/lige47/QuanX-icon-rule/raw/main/icon/taiwan.png}
   - {name: 低倍率, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/duck(1).png, <<: *fallback, filter: "(?i)(0\\.\\d+)"}
   - {name: 其他, icon: https://raw.ihtw.moe/github.com/lige47/QuanX-icon-rule/raw/main/icon/XXAI.png, type: select, include-all-providers: true, exclude-filter: "HK|US|SG|JP|TW|LAN"}
 
@@ -142,6 +143,8 @@ rules:
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,bahamut,台湾
   - RULE-SET,emby,Emby
+  - RULE-SET,steamcn,DIRECT
+  - RULE-SET,steam,Steam
   - RULE-SET,gfwlist,节点选择
   - RULE-SET,cn_site,DIRECT
   - RULE-SET,cn_ip,DIRECT
@@ -240,3 +243,9 @@ rule-providers:
   gfwlist:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/gfw.mrs"
+  steamcn:
+    <<: *mrs
+    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam@cn.mrs"
+  steam:
+    <<: *mrs
+    url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam.mrs"
