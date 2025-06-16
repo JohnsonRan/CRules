@@ -60,7 +60,7 @@ tun:
 
 dns:
   enable: true
-  disable-ipv6: true
+  ipv6: false
   respect-rules: true
   listen: 0.0.0.0:1053
   enhanced-mode: redir-host
