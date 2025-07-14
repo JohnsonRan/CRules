@@ -21,6 +21,8 @@ log-level: warning
 allow-lan: true
 skip-auth-prefixes:
 - 127.0.0.1/8
+- 172.16.1.1/24
+- 172.20.10.1/24
 unified-delay: true
 tcp-concurrent: true
 external-ui: ui
