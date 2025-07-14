@@ -120,6 +120,7 @@ proxy-groups:
 
 rules:
   - DST-PORT,6881-6999,ADBlock #FUCK WPS
+  - IP-CIDR,192.51.100.100/32,ADBlock
   - DST-PORT,3478/19302,DIRECT
   - GEOIP,lan,LAN,no-resolve
   - RULE-SET,custom_proxy,节点选择
