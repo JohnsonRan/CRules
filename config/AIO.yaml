@@ -65,12 +65,8 @@ dns:
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.0/15
-  fake-ip-filter:
-    - "*"
-    - "+.lan"
-    - "+.local"
-    - "+.ts.net"
-    - "+.market.xiaomi.com"
+  fake-ip-filter: 
+    - "ruleset:no-fakeip"
   nameserver:
     - "https://101.34.254.32/ihtw"
   nameserver-policy:
@@ -250,3 +246,6 @@ rule-providers:
   steam:
     <<: *mrs
     url: "https://raw.ihtw.moe/github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/steam.mrs"
+  no-fakeip:
+    <<: *domaintxt
+    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/no-fakeip.txt"
