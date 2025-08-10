@@ -20,7 +20,9 @@ ipv6: false
 log-level: silent
 allow-lan: true
 skip-auth-prefixes:
-- 127.0.0.1/8
+- 127.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
 unified-delay: true
 tcp-concurrent: true
 external-ui: ui
