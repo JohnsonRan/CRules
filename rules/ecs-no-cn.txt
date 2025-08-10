@@ -1,3 +1,2 @@
-nikke-en.com
-nikke-jp.com
+nikke-*.com
 iosapps.itunes.apple.com
