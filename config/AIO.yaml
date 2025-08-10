@@ -68,7 +68,8 @@ dns:
   fake-ip-filter: 
     - "ruleset:no-fakeip"
   nameserver:
-    - "https://101.34.254.32/ihtw"
+    - 223.5.5.5
+    - 119.29.29.29
   nameserver-policy:
     "*": 127.0.0.1#lo
     "+.lan": 127.0.0.1#lo
