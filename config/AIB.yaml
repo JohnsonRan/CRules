@@ -76,6 +76,8 @@ dns:
     "rule-set:cn_site,apple-cn":
       - system
       - 101.226.4.6
+    "rule-set:ecs-no-cn":
+      - '223.5.5.5#ecs=61.221.31.1/24&ecs-override=true'
 
 ntp:
   enable: true
@@ -249,3 +251,6 @@ rule-providers:
   no-fakeip:
     <<: *domaintxt
     url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/no-fakeip.txt"
+  ecs-no-cn:
+    <<: *domaintxt
+    url: "https://raw.ihtw.moe/raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ecs-no-cn.txt"
