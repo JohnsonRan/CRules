@@ -69,11 +69,11 @@ dns:
     - "ruleset:no-fakeip"
   respect-rules: true
   nameserver:
-    - https://9.9.9.12/dns-query
+    - https://8.8.8.8/dns-query
     - https://208.67.222.2/dns-query
   direct-nameserver:
-    - system
     - 223.5.5.5
+    - 119.29.29.29
   proxy-server-nameserver:
     - system
     - 223.5.5.5
