@@ -7,6 +7,7 @@ generate_ads_merged() {
   curl -skL https://big.oisd.nl/domainswild2 >>rules.txt
   curl -skL https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/reject-list.txt >>rules.txt
   curl -skL https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET.list | sed 's/^DOMAIN,//g' >>rules.txt
+  curl -skL https://github.com/ForestL18/rules-dat/raw/mihomo/geo/classical/pcdn.list >>rules.txt
 #  curl -skL https://github.com/limbopro/Adblock4limbo/raw/main/rule/Surge/Adblock4limbo_surge.list | sed 's/^DOMAIN,//g' | sed 's/^DOMAIN-SUFFIX,//g' | sed 's/,reject$//g' >>rules.txt
 
   # 移除注释和空行
@@ -41,7 +42,7 @@ generate_ads_merged() {
 # 函数：生成 AIs_merged.txt
 generate_ais_merged() {
   # 下载并合并规则
-  curl -skL https://github.com/ForestL18/rules-dat/raw/mihomo/geo/domain/ai-domain.list >>ai.txt
+#  curl -skL https://github.com/ForestL18/rules-dat/raw/mihomo/geo/domain/ai-domain.list >>ai.txt
   echo "" >>ai.txt
   curl -skL https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-ai-!cn.list >>ai.txt
   echo "" >>ai.txt
