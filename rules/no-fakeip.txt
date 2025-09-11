@@ -5,3 +5,4 @@
 +.ts.net
 +.market.xiaomi.com
 +.evo.host.aliceinit.dev
++.arpa
