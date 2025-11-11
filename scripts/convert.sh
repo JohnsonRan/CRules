@@ -14,6 +14,7 @@ generate_ads_merged() {
     curl -skL https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/reject-list.txt
     curl -skL https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET.list
     curl -skL https://github.com/ForestL18/rules-dat/raw/mihomo/geo/classical/pcdn.list
+    curl -skL https://ruleset.skk.moe/Clash/domainset/reject.txt
   } | \
     sed '/^#/d; /^$/d' | \
     sed -E 's/^(DOMAIN-KEYWORD,|DOMAIN-SUFFIX,|DOMAIN,|\+\.|\*\.|\.)//g; s/,reject$//gi' | \
