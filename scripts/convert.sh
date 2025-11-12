@@ -17,6 +17,7 @@ generate_ads_merged() {
     curl -skL https://ruleset.skk.moe/Clash/domainset/reject.txt
   } | \
     sed '/^#/d; /^$/d' | \
+    sed 's/#.*$//g' | \
     sed -E 's/^(DOMAIN-KEYWORD,|DOMAIN-SUFFIX,|DOMAIN,|\+\.|\*\.|\.)//g; s/,reject$//gi' | \
     tr '[:upper:]' '[:lower:]' | \
     sort -u | \
@@ -53,6 +54,7 @@ generate_ais_merged() {
     curl -skL https://github.com/DustinWin/ruleset_geodata/raw/mihomo-ruleset/ai.list
   } | \
     sed '/^#/d; /^$/d' | \
+    sed 's/#.*$//g' | \
     sed -E 's/^(DOMAIN-KEYWORD,|DOMAIN-SUFFIX,|DOMAIN,|\+\.|\*\.|\.)//g; s/,reject$//gi' | \
     tr '[:upper:]' '[:lower:]' | \
     sort -u | \
