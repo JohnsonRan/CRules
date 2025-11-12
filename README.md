@@ -1,9 +1,12 @@
 # CRules
 
 自用 Mihomo 配置
+
+https://ruleset.ihtw.moe
+
 ### 社区版配置
 ```shell
-https://github.com/JohnsonRan/CRules/raw/master/config/AIB.yaml
+https://ruleset.ihtw.moe/resources/config/AIB.yaml
 ```
 
 ### ADs_merged
@@ -16,12 +19,12 @@ https://github.com/JohnsonRan/CRules/raw/master/config/AIB.yaml
 
 Mihomo 使用:
 ```shell
-https://github.com/JohnsonRan/CRules/raw/mihomo/rules/ADs_merged.mrs
+https://ruleset.ihtw.moe/resources/rules/ADs_merged.mrs
 ```
 
 Surge 等代理软件使用:
 ```shell
-https://github.com/JohnsonRan/CRules/raw/mihomo/rules/ADs_merged.txt
+https://ruleset.ihtw.moe/resources/rules/ADs_merged.txt
 ```
 
 ### AIs_merged
@@ -33,10 +36,10 @@ https://github.com/JohnsonRan/CRules/raw/mihomo/rules/ADs_merged.txt
 
 Mihomo 使用:
 ```shell
-https://github.com/JohnsonRan/CRules/raw/mihomo/rules/AIs_merged.mrs
+https://ruleset.ihtw.moe/resources/rules/ai.mrs
 ```
 
 Surge 等代理软件使用:
 ```shell
-https://github.com/JohnsonRan/CRules/raw/mihomo/rules/AIs_merged.txt
+https://ruleset.ihtw.moe/resources/rules/ai.txt
 ```
