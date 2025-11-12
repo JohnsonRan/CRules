@@ -41,6 +41,11 @@ jobs:
         git commit -m "Auto Update $CURRENT_TIME"
         git push -f origin mihomo
 
+    - name: Trigger Cloudflare Pages Build
+      run: |
+        sleep 2
+        curl -skL -X POST "${{ secrets.DEPLOY_HOOK_URL }}" | jq .success
+
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
