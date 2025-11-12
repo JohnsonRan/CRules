@@ -109,45 +109,45 @@ export default function Home() {
       />
       {/* 配置下载模态框 */}
       {showConfigModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4" onClick={() => setShowConfigModal(false)}>
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-3 md:p-4" onClick={() => setShowConfigModal(false)}>
           <div className="bg-slate-800 rounded-lg shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
             {/* 头部 */}
-            <div className="flex items-center justify-between p-4 md:p-6 border-b border-slate-700">
-              <div>
-                <h2 className="text-xl md:text-2xl font-bold text-slate-100">配置文件下载</h2>
-                <p className="text-sm text-slate-400 mt-1">选择需要的配置文件</p>
+            <div className="flex items-center justify-between p-3 md:p-6 border-b border-slate-700">
+              <div className="flex-1 min-w-0 pr-2">
+                <h2 className="text-lg md:text-2xl font-bold text-slate-100">配置文件下载</h2>
+                <p className="text-xs md:text-sm text-slate-400 mt-1">选择需要的配置文件</p>
               </div>
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-slate-700 active:bg-slate-700 rounded-lg transition-colors flex-shrink-0"
               >
-                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             
             {/* 内容 */}
-            <div className="flex-1 overflow-auto p-4 md:p-6 space-y-6">
+            <div className="flex-1 overflow-auto p-3 md:p-6 space-y-4 md:space-y-6">
               {/* 配置文件列表 */}
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-slate-200 mb-3">Mihomo 配置文件</h3>
+              <div className="space-y-2 md:space-y-3">
+                <h3 className="text-base md:text-lg font-semibold text-slate-200 mb-2 md:mb-3">Mihomo 配置文件</h3>
                 {configFiles.map((file) => (
-                  <div key={file} className="bg-slate-900/50 rounded-lg p-3 md:p-4 border border-slate-700 hover:border-slate-600 transition-colors">
-                    <div className="flex flex-col gap-3">
+                  <div key={file} className="bg-slate-900/50 rounded-lg p-2.5 md:p-4 border border-slate-700 hover:border-slate-600 transition-colors">
+                    <div className="flex flex-col gap-2 md:gap-3">
                       <div>
-                        <h4 className="font-medium text-slate-100 mb-1 text-sm md:text-base">{file}</h4>
-                        <code className="text-[10px] md:text-xs text-slate-400 break-all block">
+                        <h4 className="font-medium text-slate-100 mb-1 text-xs md:text-base">{file}</h4>
+                        <code className="text-[9px] md:text-xs text-slate-400 break-all block leading-relaxed">
                           {mounted ? `${window.location.origin}/resources/config/${file}` : ''}
                         </code>
                       </div>
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-3 gap-1.5 md:gap-2">
                         <button
                           onClick={() => {
                             setShowConfigModal(false);
                             openPreview(file);
                           }}
-                          className="px-2 py-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-xs md:text-sm transition-colors"
+                          className="px-2 py-1.5 md:py-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-xs md:text-sm transition-colors"
                         >
                           预览
                         </button>
@@ -156,17 +156,17 @@ export default function Home() {
                             if (mounted) {
                               const url = `${window.location.origin}/resources/config/${file}`;
                               navigator.clipboard.writeText(url);
-                              toast.success('URL 已复制到剪贴板');
+                              toast.success('URL 已复制');
                             }
                           }}
-                          className="px-2 py-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-xs md:text-sm transition-colors"
+                          className="px-2 py-1.5 md:py-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-xs md:text-sm transition-colors"
                         >
                           复制
                         </button>
                         <a
                           href={`/resources/config/${file}`}
                           download
-                          className="px-2 py-2 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-xs md:text-sm transition-colors text-center"
+                          className="px-2 py-1.5 md:py-2 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-xs md:text-sm transition-colors text-center"
                         >
                           下载
                         </a>
@@ -177,71 +177,71 @@ export default function Home() {
               </div>
 
               {/* 合并规则文件 */}
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-slate-200 mb-3">合并规则文件</h3>
+              <div className="space-y-2 md:space-y-3">
+                <h3 className="text-base md:text-lg font-semibold text-slate-200 mb-2 md:mb-3">合并规则文件</h3>
                 
                 {/* ADs_merged */}
-                <div className="bg-slate-900/50 rounded-lg p-3 md:p-4 border border-slate-700">
-                  <h4 className="font-medium text-slate-100 mb-2 text-sm md:text-base">ADs_merged - 广告拦截规则</h4>
-                  <p className="text-[10px] md:text-xs text-slate-400 mb-3">
+                <div className="bg-slate-900/50 rounded-lg p-2.5 md:p-4 border border-slate-700">
+                  <h4 className="font-medium text-slate-100 mb-1.5 md:mb-2 text-xs md:text-base">ADs_merged - 广告拦截规则</h4>
+                  <p className="text-[9px] md:text-xs text-slate-400 mb-2 md:mb-3 leading-relaxed">
                     合并来源：ADRules, oisd big, reject-list (Loyalsoldier), AWAvenue, pcdn.list, Sukka's Ruleset
                   </p>
-                  <div className="space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] md:text-xs text-slate-400">Mihomo (.mrs)</span>
-                        <div className="flex gap-1">
+                  <div className="space-y-2 md:space-y-3">
+                    <div className="space-y-1.5 md:space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[9px] md:text-xs text-slate-400 flex-shrink-0">Mihomo (.mrs)</span>
+                        <div className="flex gap-1 flex-shrink-0">
                           <button
                             onClick={() => {
                               if (mounted) {
                                 const url = `${window.location.origin}/resources/rules/ADs_merged.mrs`;
                                 navigator.clipboard.writeText(url);
-                                toast.success('URL 已复制到剪贴板');
+                                toast.success('已复制');
                               }
                             }}
-                            className="px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             复制
                           </button>
                           <a
                             href="/resources/rules/ADs_merged.mrs"
                             download
-                            className="px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             下载
                           </a>
                         </div>
                       </div>
-                      <code className="block text-[9px] md:text-xs text-slate-400 bg-slate-950/50 px-2 py-1 rounded break-all">
+                      <code className="block text-[8px] md:text-xs text-slate-400 bg-slate-950/50 px-1.5 md:px-2 py-1 rounded break-all leading-relaxed">
                         {mounted ? `${window.location.origin}/resources/rules/ADs_merged.mrs` : ''}
                       </code>
                     </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] md:text-xs text-slate-400">通用格式 (.txt)</span>
-                        <div className="flex gap-1">
+                    <div className="space-y-1.5 md:space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[9px] md:text-xs text-slate-400 flex-shrink-0">通用格式 (.txt)</span>
+                        <div className="flex gap-1 flex-shrink-0">
                           <button
                             onClick={() => {
                               if (mounted) {
                                 const url = `${window.location.origin}/resources/rules/ADs_merged.txt`;
                                 navigator.clipboard.writeText(url);
-                                toast.success('URL 已复制到剪贴板');
+                                toast.success('已复制');
                               }
                             }}
-                            className="px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             复制
                           </button>
                           <a
                             href="/resources/rules/ADs_merged.txt"
                             download
-                            className="px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             下载
                           </a>
                         </div>
                       </div>
-                      <code className="block text-[9px] md:text-xs text-slate-400 bg-slate-950/50 px-2 py-1 rounded break-all">
+                      <code className="block text-[8px] md:text-xs text-slate-400 bg-slate-950/50 px-1.5 md:px-2 py-1 rounded break-all leading-relaxed">
                         {mounted ? `${window.location.origin}/resources/rules/ADs_merged.txt` : ''}
                       </code>
                     </div>
@@ -249,67 +249,67 @@ export default function Home() {
                 </div>
 
                 {/* AIs_merged */}
-                <div className="bg-slate-900/50 rounded-lg p-3 md:p-4 border border-slate-700">
-                  <h4 className="font-medium text-slate-100 mb-2 text-sm md:text-base">AIs_merged - AI 服务规则</h4>
-                  <p className="text-[10px] md:text-xs text-slate-400 mb-3">
+                <div className="bg-slate-900/50 rounded-lg p-2.5 md:p-4 border border-slate-700">
+                  <h4 className="font-medium text-slate-100 mb-1.5 md:mb-2 text-xs md:text-base">AIs_merged - AI 服务规则</h4>
+                  <p className="text-[9px] md:text-xs text-slate-400 mb-2 md:mb-3 leading-relaxed">
                     合并来源：ForestL18/rules-dat, MetaCubeX/meta-rules-dat, Sukka's Ruleset, DustinWin/ruleset_geodata
                   </p>
-                  <div className="space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] md:text-xs text-slate-400">Mihomo (.mrs)</span>
-                        <div className="flex gap-1">
+                  <div className="space-y-2 md:space-y-3">
+                    <div className="space-y-1.5 md:space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[9px] md:text-xs text-slate-400 flex-shrink-0">Mihomo (.mrs)</span>
+                        <div className="flex gap-1 flex-shrink-0">
                           <button
                             onClick={() => {
                               if (mounted) {
                                 const url = `${window.location.origin}/resources/rules/ai.mrs`;
                                 navigator.clipboard.writeText(url);
-                                toast.success('URL 已复制到剪贴板');
+                                toast.success('已复制');
                               }
                             }}
-                            className="px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             复制
                           </button>
                           <a
                             href="/resources/rules/ai.mrs"
                             download
-                            className="px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             下载
                           </a>
                         </div>
                       </div>
-                      <code className="block text-[9px] md:text-xs text-slate-400 bg-slate-950/50 px-2 py-1 rounded break-all">
+                      <code className="block text-[8px] md:text-xs text-slate-400 bg-slate-950/50 px-1.5 md:px-2 py-1 rounded break-all leading-relaxed">
                         {mounted ? `${window.location.origin}/resources/rules/ai.mrs` : ''}
                       </code>
                     </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] md:text-xs text-slate-400">通用格式 (.txt)</span>
-                        <div className="flex gap-1">
+                    <div className="space-y-1.5 md:space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[9px] md:text-xs text-slate-400 flex-shrink-0">通用格式 (.txt)</span>
+                        <div className="flex gap-1 flex-shrink-0">
                           <button
                             onClick={() => {
                               if (mounted) {
                                 const url = `${window.location.origin}/resources/rules/ai.txt`;
                                 navigator.clipboard.writeText(url);
-                                toast.success('URL 已复制到剪贴板');
+                                toast.success('已复制');
                               }
                             }}
-                            className="px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-slate-700 hover:bg-slate-600 active:bg-slate-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             复制
                           </button>
                           <a
                             href="/resources/rules/ai.txt"
                             download
-                            className="px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[10px] md:text-xs transition-colors"
+                            className="px-1.5 md:px-2 py-1 bg-blue-700 hover:bg-blue-600 active:bg-blue-600 text-white rounded text-[9px] md:text-xs transition-colors"
                           >
                             下载
                           </a>
                         </div>
                       </div>
-                      <code className="block text-[9px] md:text-xs text-slate-400 bg-slate-950/50 px-2 py-1 rounded break-all">
+                      <code className="block text-[8px] md:text-xs text-slate-400 bg-slate-950/50 px-1.5 md:px-2 py-1 rounded break-all leading-relaxed">
                         {mounted ? `${window.location.origin}/resources/rules/ai.txt` : ''}
                       </code>
                     </div>
@@ -317,42 +317,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* 说明文档 */}
-              <div className="border-t border-slate-700 pt-6">
-                <h3 className="text-lg font-semibold text-slate-200 mb-3">使用说明</h3>
-                <div className="space-y-4 text-sm text-slate-300">
-                  <div>
-                    <h4 className="font-medium text-slate-200 mb-2">📦 配置特点</h4>
-                    <ul className="list-disc list-inside space-y-1 text-slate-400">
-                      <li>所有资源已本地化，加载速度更快</li>
-                      <li>图标和规则文件均已下载到本地</li>
-                      <li>配置文件中的 URL 已替换为本站地址</li>
-                      <li>支持预览配置文件内容</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-slate-200 mb-2">🚀 快速开始</h4>
-                    <ol className="list-decimal list-inside space-y-1 text-slate-400">
-                      <li>点击"预览"查看配置文件内容</li>
-                      <li>点击"复制"获取配置文件 URL</li>
-                      <li>点击"下载"保存配置文件到本地</li>
-                      <li>在 Mihomo 客户端中导入配置</li>
-                    </ol>
-                  </div>
-
-                  <div>
-                    <h4 className="font-medium text-slate-200 mb-2">📝 文件格式说明</h4>
-                    <ul className="list-disc list-inside space-y-1 text-slate-400">
-                      <li><strong className="text-slate-300">.mrs</strong> - Mihomo 专用格式，体积更小，加载更快</li>
-                      <li><strong className="text-slate-300">.txt</strong> - 通用格式，兼容 Surge、Clash 等客户端</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
-            
-
           </div>
         </div>
       )}
