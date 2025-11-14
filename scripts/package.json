@@ -1,0 +1,13 @@
+{
+  "name": "adblock-compiler",
+  "version": "1.0.0",
+  "description": "AdBlock rules compiler using Hostlistcompiler",
+  "main": "compile-with-hostlist.js",
+  "scripts": {
+    "compile:ads": "node compile-with-hostlist.js ads",
+    "compile:ais": "node compile-with-hostlist.js ais"
+  },
+  "dependencies": {
+    "@adguard/hostlist-compiler": "^1.0.0"
+  }
+}

@@ -1,46 +1,45 @@
 #!/bin/bash
 
-# 函数：生成 ADs_merged.txt
+# 函数：生成 ADs_merged.txt (使用 Hostlistcompiler)
 generate_ads_merged() {
   local output="ADs_merged.txt"
-  local temp_output="${output}.tmp"
   
-  echo "Downloading and processing ad rules..."
+  echo "Compiling ad rules with Hostlistcompiler..."
   
-  # 一次性下载、处理、去重、格式化
-  {
-    curl -skL https://adrules.top/adrules_domainset.txt
-    curl -skL https://big.oisd.nl/domainswild2
-    curl -skL https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/reject-list.txt
-    curl -skL https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET.list
-    curl -skL https://github.com/ForestL18/rules-dat/raw/mihomo/geo/classical/pcdn.list
-    curl -skL https://ruleset.skk.moe/Clash/domainset/reject.txt
-  } | \
-    sed '/^#/d; /^$/d' | \
-    sed 's/#.*$//g' | \
-    sed -E 's/^(DOMAIN-KEYWORD,|DOMAIN-SUFFIX,|DOMAIN,|\+\.|\*\.|\.)//g; s/,reject$//gi' | \
-    tr '[:upper:]' '[:lower:]' | \
-    sort -u | \
-    grep -v -f "scripts/exclude-keyword.txt" | \
-    awk '{ print "DOMAIN-SUFFIX," $0 }' > "$temp_output"
+  # 使用 Hostlistcompiler 进行下载、压缩、去重、白名单过滤
+  cd scripts
+  node compile-with-hostlist.js ads
+  cd ..
   
-  # 添加计数和时间戳
-  count=$(wc -l < "$temp_output")
-  current_date=$(date +"%Y-%m-%d %H:%M:%S")
-  sed -i "1i# Count: $count, Updated: $current_date" "$temp_output"
+  # 移动编译后的文件到根目录
+  if [ -f "scripts/ADs_merged.txt" ]; then
+    mv "scripts/ADs_merged.txt" "$output"
+  fi
+  
+  # 后处理：应用额外的关键词排除
+  if [ -f "scripts/exclude-keyword.txt" ]; then
+    echo "Applying additional keyword exclusions..."
+    grep -v -f "scripts/exclude-keyword.txt" "$output" > "${output}.tmp"
+    mv "${output}.tmp" "$output"
+  fi
   
   # 生成 mihomo 格式（使用 +. 前缀）
-  sed 's/^DOMAIN-SUFFIX,/+./g' "$temp_output" > "${output}.mihomo"
-  mihomo convert-ruleset domain text "${output}.mihomo" ADs_merged.mrs 2>/dev/null || echo "Warning: mihomo conversion failed"
+  echo "Converting to mihomo format..."
+  sed 's/^DOMAIN-SUFFIX,/+./g; s/^\|\|/+./g; s/\^$//g' "$output" | grep -v '^#' > "${output}.mihomo"
+  
+  if command -v mihomo &> /dev/null; then
+    mihomo convert-ruleset domain text "${output}.mihomo" ADs_merged.mrs 2>/dev/null || echo "Warning: mihomo conversion failed"
+  else
+    echo "Warning: mihomo not found, skipping .mrs conversion"
+  fi
+  
   rm -f "${output}.mihomo"
   
-  # 移动到最终输出
-  mv "$temp_output" "$output"
-  
-  echo "Generated $output with $count domains"
+  count=$(grep -v '^#' "$output" | wc -l)
+  echo "✓ Generated $output with $count domains"
 }
 
-# 函数：生成 AIs_merged.txt
+# 函数：生成 AIs_merged.txt (使用原来的方法)
 generate_ais_merged() {
   local output="AIs_merged.txt"
   local temp_output="${output}.tmp"
@@ -67,14 +66,20 @@ generate_ais_merged() {
   sed -i "1i# Count: $count, Updated: $current_date" "$temp_output"
   
   # 生成 mihomo 格式（使用 +. 前缀）
-  sed 's/^DOMAIN-SUFFIX,/+./g' "$temp_output" > "${output}.mihomo"
-  mihomo convert-ruleset domain text "${output}.mihomo" AIs_merged.mrs 2>/dev/null || echo "Warning: mihomo conversion failed"
+  sed 's/^DOMAIN-SUFFIX,/+./g' "$temp_output" | grep -v '^#' > "${output}.mihomo"
+  
+  if command -v mihomo &> /dev/null; then
+    mihomo convert-ruleset domain text "${output}.mihomo" AIs_merged.mrs 2>/dev/null || echo "Warning: mihomo conversion failed"
+  else
+    echo "Warning: mihomo not found, skipping .mrs conversion"
+  fi
+  
   rm -f "${output}.mihomo"
   
   # 移动到最终输出
   mv "$temp_output" "$output"
   
-  echo "Generated $output with $count domains"
+  echo "✓ Generated $output with $count domains"
 }
 
 # 主函数
