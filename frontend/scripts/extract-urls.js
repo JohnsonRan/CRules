@@ -42,6 +42,27 @@ async function downloadFile(url, outputPath) {
   }
 }
 
+function moveLocalFile(sourcePath, outputPath, fileName) {
+  try {
+    if (!fs.existsSync(sourcePath)) {
+      console.log(`⚠ 本地文件不存在: ${sourcePath}`);
+      return false;
+    }
+    
+    console.log(`📦 移动本地文件: ${fileName}`);
+    
+    // 复制文件（而不是移动，保留原文件）
+    fs.copyFileSync(sourcePath, outputPath);
+    
+    const stats = fs.statSync(outputPath);
+    console.log(`✓ 复制到: ${outputPath} (${stats.size} bytes)`);
+    return true;
+  } catch (error) {
+    console.error(`✗ 移动文件失败 ${sourcePath}:`, error.message);
+    return false;
+  }
+}
+
 function getFileName(url, name, type) {
   const urlPath = new URL(url).pathname;
   let ext = path.extname(urlPath) || '.txt';
@@ -68,13 +89,7 @@ function getFileName(url, name, type) {
   return 'file_' + Date.now() + ext;
 }
 
-function convertUrlExtension(url) {
-  // 将 .mrs 后缀改为 .txt 以便下载
-  if (url.endsWith('.mrs')) {
-    return url.replace(/\.mrs$/, '.txt');
-  }
-  return url;
-}
+
 
 async function extractAndDownload() {
   const urls = [];
@@ -158,20 +173,23 @@ async function extractAndDownload() {
     const outputPath = path.join(targetDir, fileName);
     const relativePath = path.relative(path.join(__dirname, '..'), outputPath);
     
-    // 只有 ADs_merged 和 AIs_merged (ai) 需要额外下载 .txt 版本
-    const needsTxtVersion = (item.name === 'ADs_merged' || item.name === 'ai') && item.url.endsWith('.mrs');
+    // 检查是否是 ADs_merged 或 ai (AIs_merged) 规则
+    const isLocalAdRule = item.name === 'ADs_merged' && item.url.endsWith('.mrs');
+    const isLocalAiRule = item.name === 'ai' && item.url.endsWith('.mrs');
+    const isLocalRule = isLocalAdRule || isLocalAiRule;
     
-    // 对于需要 .txt 版本的文件，先下载 .txt
-    if (needsTxtVersion) {
-      const txtUrl = convertUrlExtension(item.url);
+    // 对于本地生成的规则文件，从根目录移动
+    if (isLocalRule) {
+      const rootDir = path.join(__dirname, '..', '..');
+      
+      // 处理 .txt 版本
       const txtFileName = fileName.replace(/\.mrs$/, '.txt');
+      const txtSourcePath = path.join(rootDir, isLocalAdRule ? 'ADs_merged.txt' : 'AIs_merged.txt');
       const txtOutputPath = path.join(targetDir, txtFileName);
       const txtRelativePath = path.relative(path.join(__dirname, '..'), txtOutputPath);
       
-      console.log(`📝 下载 .txt 版本: ${txtFileName}`);
-      const txtSuccess = await downloadFile(txtUrl, txtOutputPath);
+      const txtSuccess = moveLocalFile(txtSourcePath, txtOutputPath, txtFileName);
       
-      // 将 .txt 文件也添加到 manifest
       if (txtSuccess) {
         const txtStats = fs.statSync(txtOutputPath);
         if (txtStats.size > 0) {
@@ -179,7 +197,7 @@ async function extractAndDownload() {
           const txtApiUrl = `/api/files/${item.type}/${txtFileName}`;
           
           downloadedFiles.push({
-            originalUrl: txtUrl,
+            originalUrl: item.url.replace(/\.mrs$/, '.txt'),
             localPath: txtRelativePath.replace(/\\/g, '/'),
             fileUrl: txtApiUrl,
             resourcePath: txtResourcePath,
@@ -190,41 +208,70 @@ async function extractAndDownload() {
           });
         }
       }
-    }
-    
-    // 下载原始文件
-    const downloadUrl = item.url;
-    
-    const success = await downloadFile(downloadUrl, outputPath);
-    if (success) {
-      // 检查下载的文件是否为空
-      const stats = fs.statSync(outputPath);
-      if (stats.size === 0) {
-        console.log(`⚠ 删除空文件: ${outputPath}`);
-        fs.unlinkSync(outputPath);
-        emptyCount++;
+      
+      // 处理 .mrs 版本
+      const mrsSourcePath = path.join(rootDir, isLocalAdRule ? 'ADs_merged.mrs' : 'AIs_merged.mrs');
+      const mrsSuccess = moveLocalFile(mrsSourcePath, outputPath, fileName);
+      
+      if (mrsSuccess) {
+        const stats = fs.statSync(outputPath);
+        if (stats.size === 0) {
+          console.log(`⚠ 删除空文件: ${outputPath}`);
+          fs.unlinkSync(outputPath);
+          emptyCount++;
+        } else {
+          successCount++;
+          const resourcePath = `resources/${item.type}/${fileName}`;
+          const fullUrl = `${baseUrl}/${resourcePath}`;
+          const apiUrl = `/api/files/${item.type}/${fileName}`;
+          
+          urlMapping.set(item.url, fullUrl);
+          
+          downloadedFiles.push({
+            originalUrl: item.url,
+            localPath: relativePath.replace(/\\/g, '/'),
+            fileUrl: apiUrl,
+            resourcePath: resourcePath,
+            type: item.type,
+            name: item.name,
+            source: item.source,
+            fileName: fileName
+          });
+        }
       } else {
-        successCount++;
-        const resourcePath = `resources/${item.type}/${fileName}`;
-        const fullUrl = `${baseUrl}/${resourcePath}`;
-        const apiUrl = `/api/files/${item.type}/${fileName}`;
-        
-        // 只有文件不为空时才保存URL映射
-        urlMapping.set(item.url, fullUrl);
-        
-        downloadedFiles.push({
-          originalUrl: item.url,
-          localPath: relativePath.replace(/\\/g, '/'),
-          fileUrl: apiUrl,
-          resourcePath: resourcePath,
-          type: item.type,
-          name: item.name,
-          source: item.source,
-          fileName: fileName
-        });
+        failCount++;
       }
     } else {
-      failCount++;
+      // 其他文件正常下载
+      const success = await downloadFile(item.url, outputPath);
+      if (success) {
+        const stats = fs.statSync(outputPath);
+        if (stats.size === 0) {
+          console.log(`⚠ 删除空文件: ${outputPath}`);
+          fs.unlinkSync(outputPath);
+          emptyCount++;
+        } else {
+          successCount++;
+          const resourcePath = `resources/${item.type}/${fileName}`;
+          const fullUrl = `${baseUrl}/${resourcePath}`;
+          const apiUrl = `/api/files/${item.type}/${fileName}`;
+          
+          urlMapping.set(item.url, fullUrl);
+          
+          downloadedFiles.push({
+            originalUrl: item.url,
+            localPath: relativePath.replace(/\\/g, '/'),
+            fileUrl: apiUrl,
+            resourcePath: resourcePath,
+            type: item.type,
+            name: item.name,
+            source: item.source,
+            fileName: fileName
+          });
+        }
+      } else {
+        failCount++;
+      }
     }
   }
   

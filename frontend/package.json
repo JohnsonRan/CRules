@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "npm run extract && next build",
     "start": "next start",
-    "extract": "node scripts/extract-urls.js"
+    "extract": "node scripts/extract-urls.js",
+    "convert:ads": "node scripts/convert.js ads",
+    "convert:ais": "node scripts/convert.js ais"
   },
   "dependencies": {
+    "@adguard/hostlist-compiler": "^1.0.0",
     "axios": "^1.7.0",
     "js-yaml": "^4.1.0",
     "next": "^15.1.0",

@@ -1,4 +1,4 @@
-name: Merge Rules
+name: Build frontend
 
 on:
   schedule:
@@ -6,17 +6,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  merge-and-clean:
+  build-frontend:
     runs-on: ubuntu-latest
     env:
       TZ: 'Asia/Shanghai'
+      BASE_URL: ${{ secrets.BASE_URL }}
+      NEXT_PUBLIC_SITE_DESCRIPTION: ${{ secrets.NEXT_PUBLIC_SITE_DESCRIPTION }}
+      NEXT_PUBLIC_SITE_NAME: ${{ secrets.NEXT_PUBLIC_SITE_NAME }}
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
     - uses: actions/setup-node@v6
-    - run: cd scripts && npm install
+    
+    - name: Install dependencies
+      run: |
+        cd frontend && npm install
 
     - name: Install mihomo
       run: |
@@ -26,28 +32,30 @@ jobs:
 
     - name: Convert AD Rules into mrs
       run: |
-        bash scripts/convert.sh ads
+        cd frontend && npm run convert:ads
 
     - name: Convert AI Rules into mrs
       run: |
-        bash scripts/convert.sh ais
+        cd frontend && npm run convert:ais
 
-    - name: Commit and push changes
+    - name: Build frontend
       run: |
-        mv {*.mrs,ADs_merged.txt,AIs_merged.txt} rules/
+        cd frontend && npm run build
+        
+    - name: Commit and push to mihomo branch
+      run: |
         CURRENT_TIME=$(date +"%Y-%m-%d %H:%M")
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
+        mkdir -p /tmp/mihomo-deploy
+        cp -r frontend/out/* /tmp/mihomo-deploy/
         git checkout --orphan mihomo
         git rm -rf .
-        git add rules/*
+        rm -rf *
+        cp -r /tmp/mihomo-deploy/* .
+        git add .
         git commit -m "Auto Update $CURRENT_TIME"
         git push -f origin mihomo
-
-    - name: Trigger Cloudflare Pages Build
-      run: |
-        sleep 2
-        curl -skL -X POST "${{ secrets.DEPLOY_HOOK_URL }}" | jq .success
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
