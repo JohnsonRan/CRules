@@ -6,3 +6,4 @@
 +.market.xiaomi.com
 +.evo.host.aliceinit.dev
 +.arpa
+lancache.steamcontent.com
