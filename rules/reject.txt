@@ -8,3 +8,4 @@
 +.maplocatesdksnapshot.d.meituan.net
 +.lf0-webcast-sourcecdn-tos.bytegecko.com
 +.simg-ssl.duolingo.com
++.mountaintoys.cn
