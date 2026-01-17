@@ -1,0 +1,602 @@
+[
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/sub(1).png",
+    "localPath": "public/resources/icon/sub(1).png",
+    "fileUrl": "/api/files/icon/sub(1).png",
+    "resourcePath": "resources/icon/sub(1).png",
+    "type": "icon",
+    "name": "节点选择",
+    "source": "AIB.yaml",
+    "fileName": "sub(1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/lightning(2).png",
+    "localPath": "public/resources/icon/lightning(2).png",
+    "fileUrl": "/api/files/icon/lightning(2).png",
+    "resourcePath": "resources/icon/lightning(2).png",
+    "type": "icon",
+    "name": "自动选择",
+    "source": "AIB.yaml",
+    "fileName": "lightning(2).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/speedtest.png",
+    "localPath": "public/resources/icon/speedtest.png",
+    "fileUrl": "/api/files/icon/speedtest.png",
+    "resourcePath": "resources/icon/speedtest.png",
+    "type": "icon",
+    "name": "Speedtest",
+    "source": "AIB.yaml",
+    "fileName": "speedtest.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/emby.png",
+    "localPath": "public/resources/icon/emby.png",
+    "fileUrl": "/api/files/icon/emby.png",
+    "resourcePath": "resources/icon/emby.png",
+    "type": "icon",
+    "name": "Emby",
+    "source": "AIB.yaml",
+    "fileName": "emby.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/ChatGPT-green.png",
+    "localPath": "public/resources/icon/ChatGPT-green.png",
+    "fileUrl": "/api/files/icon/ChatGPT-green.png",
+    "resourcePath": "resources/icon/ChatGPT-green.png",
+    "type": "icon",
+    "name": "AI",
+    "source": "AIB.yaml",
+    "fileName": "ChatGPT-green.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/steam.png",
+    "localPath": "public/resources/icon/steam.png",
+    "fileUrl": "/api/files/icon/steam.png",
+    "resourcePath": "resources/icon/steam.png",
+    "type": "icon",
+    "name": "Steam",
+    "source": "AIB.yaml",
+    "fileName": "steam.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/apple.png",
+    "localPath": "public/resources/icon/apple.png",
+    "fileUrl": "/api/files/icon/apple.png",
+    "resourcePath": "resources/icon/apple.png",
+    "type": "icon",
+    "name": "Apple",
+    "source": "AIB.yaml",
+    "fileName": "apple.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/github.png",
+    "localPath": "public/resources/icon/github.png",
+    "fileUrl": "/api/files/icon/github.png",
+    "resourcePath": "resources/icon/github.png",
+    "type": "icon",
+    "name": "Github",
+    "source": "AIB.yaml",
+    "fileName": "github.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/telegram(blue1).png",
+    "localPath": "public/resources/icon/telegram(blue1).png",
+    "fileUrl": "/api/files/icon/telegram(blue1).png",
+    "resourcePath": "resources/icon/telegram(blue1).png",
+    "type": "icon",
+    "name": "Telegram",
+    "source": "AIB.yaml",
+    "fileName": "telegram(blue1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/google(1).png",
+    "localPath": "public/resources/icon/google(1).png",
+    "fileUrl": "/api/files/icon/google(1).png",
+    "resourcePath": "resources/icon/google(1).png",
+    "type": "icon",
+    "name": "Google",
+    "source": "AIB.yaml",
+    "fileName": "google(1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/youtube.png",
+    "localPath": "public/resources/icon/youtube.png",
+    "fileUrl": "/api/files/icon/youtube.png",
+    "resourcePath": "resources/icon/youtube.png",
+    "type": "icon",
+    "name": "YouTube",
+    "source": "AIB.yaml",
+    "fileName": "youtube.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/direct.png",
+    "localPath": "public/resources/icon/direct.png",
+    "fileUrl": "/api/files/icon/direct.png",
+    "resourcePath": "resources/icon/direct.png",
+    "type": "icon",
+    "name": "Tracker",
+    "source": "AIB.yaml",
+    "fileName": "direct.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/yuyanyun.png",
+    "localPath": "public/resources/icon/yuyanyun.png",
+    "fileUrl": "/api/files/icon/yuyanyun.png",
+    "resourcePath": "resources/icon/yuyanyun.png",
+    "type": "icon",
+    "name": "Porns",
+    "source": "AIB.yaml",
+    "fileName": "yuyanyun.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/bilibili(1).png",
+    "localPath": "public/resources/icon/bilibili(1).png",
+    "fileUrl": "/api/files/icon/bilibili(1).png",
+    "resourcePath": "resources/icon/bilibili(1).png",
+    "type": "icon",
+    "name": "Bilibili",
+    "source": "AIB.yaml",
+    "fileName": "bilibili(1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/microsoft.png",
+    "localPath": "public/resources/icon/microsoft.png",
+    "fileUrl": "/api/files/icon/microsoft.png",
+    "resourcePath": "resources/icon/microsoft.png",
+    "type": "icon",
+    "name": "Microsoft",
+    "source": "AIB.yaml",
+    "fileName": "microsoft.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/ad(6).png",
+    "localPath": "public/resources/icon/ad(6).png",
+    "fileUrl": "/api/files/icon/ad(6).png",
+    "resourcePath": "resources/icon/ad(6).png",
+    "type": "icon",
+    "name": "ADBlock",
+    "source": "AIB.yaml",
+    "fileName": "ad(6).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/shutiao.png",
+    "localPath": "public/resources/icon/shutiao.png",
+    "fileUrl": "/api/files/icon/shutiao.png",
+    "resourcePath": "resources/icon/shutiao.png",
+    "type": "icon",
+    "name": "MATCH",
+    "source": "AIB.yaml",
+    "fileName": "shutiao.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/Hongkong(2).png",
+    "localPath": "public/resources/icon/Hongkong(2).png",
+    "fileUrl": "/api/files/icon/Hongkong(2).png",
+    "resourcePath": "resources/icon/Hongkong(2).png",
+    "type": "icon",
+    "name": "香港",
+    "source": "AIB.yaml",
+    "fileName": "Hongkong(2).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/US(1).png",
+    "localPath": "public/resources/icon/US(1).png",
+    "fileUrl": "/api/files/icon/US(1).png",
+    "resourcePath": "resources/icon/US(1).png",
+    "type": "icon",
+    "name": "美国",
+    "source": "AIB.yaml",
+    "fileName": "US(1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/singapore(2).png",
+    "localPath": "public/resources/icon/singapore(2).png",
+    "fileUrl": "/api/files/icon/singapore(2).png",
+    "resourcePath": "resources/icon/singapore(2).png",
+    "type": "icon",
+    "name": "新加坡",
+    "source": "AIB.yaml",
+    "fileName": "singapore(2).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/Japan(1).png",
+    "localPath": "public/resources/icon/Japan(1).png",
+    "fileUrl": "/api/files/icon/Japan(1).png",
+    "resourcePath": "resources/icon/Japan(1).png",
+    "type": "icon",
+    "name": "日本",
+    "source": "AIB.yaml",
+    "fileName": "Japan(1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/taiwan.png",
+    "localPath": "public/resources/icon/taiwan.png",
+    "fileUrl": "/api/files/icon/taiwan.png",
+    "resourcePath": "resources/icon/taiwan.png",
+    "type": "icon",
+    "name": "台湾",
+    "source": "AIB.yaml",
+    "fileName": "taiwan.png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/duck(1).png",
+    "localPath": "public/resources/icon/duck(1).png",
+    "fileUrl": "/api/files/icon/duck(1).png",
+    "resourcePath": "resources/icon/duck(1).png",
+    "type": "icon",
+    "name": "低倍率",
+    "source": "AIB.yaml",
+    "fileName": "duck(1).png"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/XXAI.png",
+    "localPath": "public/resources/icon/XXAI.png",
+    "fileUrl": "/api/files/icon/XXAI.png",
+    "resourcePath": "resources/icon/XXAI.png",
+    "type": "icon",
+    "name": "其他",
+    "source": "AIB.yaml",
+    "fileName": "XXAI.png"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/custom.yaml",
+    "localPath": "public/resources/rules/custom_direct.yaml",
+    "fileUrl": "/api/files/rules/custom_direct.yaml",
+    "resourcePath": "resources/rules/custom_direct.yaml",
+    "type": "rules",
+    "name": "custom_direct",
+    "source": "AIB.yaml",
+    "fileName": "custom_direct.yaml"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/customProxy.yaml",
+    "localPath": "public/resources/rules/custom_proxy.yaml",
+    "fileUrl": "/api/files/rules/custom_proxy.yaml",
+    "resourcePath": "resources/rules/custom_proxy.yaml",
+    "type": "rules",
+    "name": "custom_proxy",
+    "source": "AIB.yaml",
+    "fileName": "custom_proxy.yaml"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/reject.txt",
+    "localPath": "public/resources/rules/custom_reject.txt",
+    "fileUrl": "/api/files/rules/custom_reject.txt",
+    "resourcePath": "resources/rules/custom_reject.txt",
+    "type": "rules",
+    "name": "custom_reject",
+    "source": "AIB.yaml",
+    "fileName": "custom_reject.txt"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list",
+    "localPath": "public/resources/rules/emby.list",
+    "fileUrl": "/api/files/rules/emby.list",
+    "resourcePath": "resources/rules/emby.list",
+    "type": "rules",
+    "name": "emby",
+    "source": "AIB.yaml",
+    "fileName": "emby.list"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/AIs_merged.txt",
+    "localPath": "public/resources/rules/ai.txt",
+    "fileUrl": "/api/files/rules/ai.txt",
+    "resourcePath": "resources/rules/ai.txt",
+    "type": "rules",
+    "name": "ai",
+    "source": "AIB.yaml",
+    "fileName": "ai.txt"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/AIs_merged.mrs",
+    "localPath": "public/resources/rules/ai.mrs",
+    "fileUrl": "/api/files/rules/ai.mrs",
+    "resourcePath": "resources/rules/ai.mrs",
+    "type": "rules",
+    "name": "ai",
+    "source": "AIB.yaml",
+    "fileName": "ai.mrs"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_merged.txt",
+    "localPath": "public/resources/rules/ADs_merged.txt",
+    "fileUrl": "/api/files/rules/ADs_merged.txt",
+    "resourcePath": "resources/rules/ADs_merged.txt",
+    "type": "rules",
+    "name": "ADs_merged",
+    "source": "AIB.yaml",
+    "fileName": "ADs_merged.txt"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/mihomo/rules/ADs_merged.mrs",
+    "localPath": "public/resources/rules/ADs_merged.mrs",
+    "fileUrl": "/api/files/rules/ADs_merged.mrs",
+    "resourcePath": "resources/rules/ADs_merged.mrs",
+    "type": "rules",
+    "name": "ADs_merged",
+    "source": "AIB.yaml",
+    "fileName": "ADs_merged.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo-lite/geosite/biliintl.mrs",
+    "localPath": "public/resources/rules/biliintl.mrs",
+    "fileUrl": "/api/files/rules/biliintl.mrs",
+    "resourcePath": "resources/rules/biliintl.mrs",
+    "type": "rules",
+    "name": "biliintl",
+    "source": "AIB.yaml",
+    "fileName": "biliintl.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/tracker.mrs",
+    "localPath": "public/resources/rules/tracker.mrs",
+    "fileUrl": "/api/files/rules/tracker.mrs",
+    "resourcePath": "resources/rules/tracker.mrs",
+    "type": "rules",
+    "name": "tracker",
+    "source": "AIB.yaml",
+    "fileName": "tracker.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs",
+    "localPath": "public/resources/rules/youtube.mrs",
+    "fileUrl": "/api/files/rules/youtube.mrs",
+    "resourcePath": "resources/rules/youtube.mrs",
+    "type": "rules",
+    "name": "youtube",
+    "source": "AIB.yaml",
+    "fileName": "youtube.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/google.mrs",
+    "localPath": "public/resources/rules/google_site.mrs",
+    "fileUrl": "/api/files/rules/google_site.mrs",
+    "resourcePath": "resources/rules/google_site.mrs",
+    "type": "rules",
+    "name": "google_site",
+    "source": "AIB.yaml",
+    "fileName": "google_site.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/google.mrs",
+    "localPath": "public/resources/rules/google_ip.mrs",
+    "fileUrl": "/api/files/rules/google_ip.mrs",
+    "resourcePath": "resources/rules/google_ip.mrs",
+    "type": "rules",
+    "name": "google_ip",
+    "source": "AIB.yaml",
+    "fileName": "google_ip.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-porn.mrs",
+    "localPath": "public/resources/rules/category-porn.mrs",
+    "fileUrl": "/api/files/rules/category-porn.mrs",
+    "resourcePath": "resources/rules/category-porn.mrs",
+    "type": "rules",
+    "name": "category-porn",
+    "source": "AIB.yaml",
+    "fileName": "category-porn.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-games@cn.mrs",
+    "localPath": "public/resources/rules/category-cngames.mrs",
+    "fileUrl": "/api/files/rules/category-cngames.mrs",
+    "resourcePath": "resources/rules/category-cngames.mrs",
+    "type": "rules",
+    "name": "category-cngames",
+    "source": "AIB.yaml",
+    "fileName": "category-cngames.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bilibili.mrs",
+    "localPath": "public/resources/rules/bilibili.mrs",
+    "fileUrl": "/api/files/rules/bilibili.mrs",
+    "resourcePath": "resources/rules/bilibili.mrs",
+    "type": "rules",
+    "name": "bilibili",
+    "source": "AIB.yaml",
+    "fileName": "bilibili.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/telegram.mrs",
+    "localPath": "public/resources/rules/tg_ip.mrs",
+    "fileUrl": "/api/files/rules/tg_ip.mrs",
+    "resourcePath": "resources/rules/tg_ip.mrs",
+    "type": "rules",
+    "name": "tg_ip",
+    "source": "AIB.yaml",
+    "fileName": "tg_ip.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs",
+    "localPath": "public/resources/rules/tg_site.mrs",
+    "fileUrl": "/api/files/rules/tg_site.mrs",
+    "resourcePath": "resources/rules/tg_site.mrs",
+    "type": "rules",
+    "name": "tg_site",
+    "source": "AIB.yaml",
+    "fileName": "tg_site.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/github.mrs",
+    "localPath": "public/resources/rules/github.mrs",
+    "fileUrl": "/api/files/rules/github.mrs",
+    "resourcePath": "resources/rules/github.mrs",
+    "type": "rules",
+    "name": "github",
+    "source": "AIB.yaml",
+    "fileName": "github.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft.mrs",
+    "localPath": "public/resources/rules/microsoft.mrs",
+    "fileUrl": "/api/files/rules/microsoft.mrs",
+    "resourcePath": "resources/rules/microsoft.mrs",
+    "type": "rules",
+    "name": "microsoft",
+    "source": "AIB.yaml",
+    "fileName": "microsoft.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/win-update.mrs",
+    "localPath": "public/resources/rules/win-update.mrs",
+    "fileUrl": "/api/files/rules/win-update.mrs",
+    "resourcePath": "resources/rules/win-update.mrs",
+    "type": "rules",
+    "name": "win-update",
+    "source": "AIB.yaml",
+    "fileName": "win-update.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bahamut.mrs",
+    "localPath": "public/resources/rules/bahamut.mrs",
+    "fileUrl": "/api/files/rules/bahamut.mrs",
+    "resourcePath": "resources/rules/bahamut.mrs",
+    "type": "rules",
+    "name": "bahamut",
+    "source": "AIB.yaml",
+    "fileName": "bahamut.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/cn.mrs",
+    "localPath": "public/resources/rules/cn_site.mrs",
+    "fileUrl": "/api/files/rules/cn_site.mrs",
+    "resourcePath": "resources/rules/cn_site.mrs",
+    "type": "rules",
+    "name": "cn_site",
+    "source": "AIB.yaml",
+    "fileName": "cn_site.mrs"
+  },
+  {
+    "originalUrl": "https://ruleset.skk.moe/Clash/non_ip/domestic.txt",
+    "localPath": "public/resources/rules/chinadomains.txt",
+    "fileUrl": "/api/files/rules/chinadomains.txt",
+    "resourcePath": "resources/rules/chinadomains.txt",
+    "type": "rules",
+    "name": "chinadomains",
+    "source": "AIB.yaml",
+    "fileName": "chinadomains.txt"
+  },
+  {
+    "originalUrl": "https://github.com/ForestL18/rules-dat/raw/mihomo/asn/combined/China-ASN-combined.mrs",
+    "localPath": "public/resources/rules/cn_ip.mrs",
+    "fileUrl": "/api/files/rules/cn_ip.mrs",
+    "resourcePath": "resources/rules/cn_ip.mrs",
+    "type": "rules",
+    "name": "cn_ip",
+    "source": "AIB.yaml",
+    "fileName": "cn_ip.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-httpdns-cn.mrs",
+    "localPath": "public/resources/rules/httpdns.mrs",
+    "fileUrl": "/api/files/rules/httpdns.mrs",
+    "resourcePath": "resources/rules/httpdns.mrs",
+    "type": "rules",
+    "name": "httpdns",
+    "source": "AIB.yaml",
+    "fileName": "httpdns.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple-cn.mrs",
+    "localPath": "public/resources/rules/apple-cn.mrs",
+    "fileUrl": "/api/files/rules/apple-cn.mrs",
+    "resourcePath": "resources/rules/apple-cn.mrs",
+    "type": "rules",
+    "name": "apple-cn",
+    "source": "AIB.yaml",
+    "fileName": "apple-cn.mrs"
+  },
+  {
+    "originalUrl": "https://raw.ihtw.moe/github.com/Repcz/Tool/raw/X/mihomo/Rules/AppleProxy.list",
+    "localPath": "public/resources/rules/apple_proxy.list",
+    "fileUrl": "/api/files/rules/apple_proxy.list",
+    "resourcePath": "resources/rules/apple_proxy.list",
+    "type": "rules",
+    "name": "apple_proxy",
+    "source": "AIB.yaml",
+    "fileName": "apple_proxy.list"
+  },
+  {
+    "originalUrl": "https://ruleset.skk.moe/Clash/domainset/speedtest.txt",
+    "localPath": "public/resources/rules/speedtest.txt",
+    "fileUrl": "/api/files/rules/speedtest.txt",
+    "resourcePath": "resources/rules/speedtest.txt",
+    "type": "rules",
+    "name": "speedtest",
+    "source": "AIB.yaml",
+    "fileName": "speedtest.txt"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/gfw.mrs",
+    "localPath": "public/resources/rules/gfwlist.mrs",
+    "fileUrl": "/api/files/rules/gfwlist.mrs",
+    "resourcePath": "resources/rules/gfwlist.mrs",
+    "type": "rules",
+    "name": "gfwlist",
+    "source": "AIB.yaml",
+    "fileName": "gfwlist.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/steam@cn.mrs",
+    "localPath": "public/resources/rules/steamcn.mrs",
+    "fileUrl": "/api/files/rules/steamcn.mrs",
+    "resourcePath": "resources/rules/steamcn.mrs",
+    "type": "rules",
+    "name": "steamcn",
+    "source": "AIB.yaml",
+    "fileName": "steamcn.mrs"
+  },
+  {
+    "originalUrl": "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/steam.mrs",
+    "localPath": "public/resources/rules/steam.mrs",
+    "fileUrl": "/api/files/rules/steam.mrs",
+    "resourcePath": "resources/rules/steam.mrs",
+    "type": "rules",
+    "name": "steam",
+    "source": "AIB.yaml",
+    "fileName": "steam.mrs"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/no-fakeip.txt",
+    "localPath": "public/resources/rules/no-fakeip.txt",
+    "fileUrl": "/api/files/rules/no-fakeip.txt",
+    "resourcePath": "resources/rules/no-fakeip.txt",
+    "type": "rules",
+    "name": "no-fakeip",
+    "source": "AIB.yaml",
+    "fileName": "no-fakeip.txt"
+  },
+  {
+    "originalUrl": "https://raw.githubusercontent.com/JohnsonRan/CRules/master/rules/ecs-no-cn.txt",
+    "localPath": "public/resources/rules/ecs-no-cn.txt",
+    "fileUrl": "/api/files/rules/ecs-no-cn.txt",
+    "resourcePath": "resources/rules/ecs-no-cn.txt",
+    "type": "rules",
+    "name": "ecs-no-cn",
+    "source": "AIB.yaml",
+    "fileName": "ecs-no-cn.txt"
+  },
+  {
+    "originalUrl": "https://github.com/JohnsonRan/icon/raw/main/icon/nike.png",
+    "localPath": "public/resources/icon/nike.png",
+    "fileUrl": "/api/files/icon/nike.png",
+    "resourcePath": "resources/icon/nike.png",
+    "type": "icon",
+    "name": "代理链",
+    "source": "AIO.yaml",
+    "fileName": "nike.png"
+  },
+  {
+    "originalUrl": "https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AppleProxy.list",
+    "localPath": "public/resources/rules/apple_proxy.list",
+    "fileUrl": "/api/files/rules/apple_proxy.list",
+    "resourcePath": "resources/rules/apple_proxy.list",
+    "type": "rules",
+    "name": "apple_proxy",
+    "source": "AIO.yaml",
+    "fileName": "apple_proxy.list"
+  }
+]
