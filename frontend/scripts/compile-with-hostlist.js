@@ -29,12 +29,6 @@ const adsConfig = {
       transformations: ["RemoveComments", "Validate"]
     },
     {
-      name: "AWAvenue Ads Rule",
-      source: "https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET.list",
-      type: "adblock",
-      transformations: ["RemoveComments", "Validate"]
-    },
-    {
       name: "PCDN List",
       source: "https://github.com/ForestL18/rules-dat/raw/mihomo/geo/classical/pcdn.list",
       type: "adblock",

@@ -92,110 +92,73 @@ async function generateAdsMerged() {
   }
 }
 
-// 生成 AIs_merged.txt (使用原来的方法)
+// 生成 AIs_merged.txt (使用 Hostlistcompiler)
 async function generateAisMerged() {
   const output = 'AIs_merged.txt';
-  const rootDir = path.join(__dirname, '..', '..');
-  const scriptsDir = __dirname;
-  const outputPath = path.join(rootDir, output);
   
-  console.log('Downloading and processing AI rules...');
+  console.log('Compiling AI rules with Hostlistcompiler...');
   
   try {
-    const axios = require('axios');
+    const scriptsDir = __dirname;
+    const rootDir = path.join(__dirname, '..', '..');
     
-    // 下载所有源
-    const sources = [
-      'https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-ai-!cn.list',
-      'https://ruleset.skk.moe/List/non_ip/ai.conf',
-      'https://github.com/DustinWin/ruleset_geodata/raw/mihomo-ruleset/ai.list'
-    ];
+    execSync('node compile-with-hostlist.js ais', { 
+      cwd: scriptsDir,
+      stdio: 'inherit'
+    });
     
-    const allRules = new Set();
+    // 移动编译后的文件到根目录
+    const sourceFile = path.join(scriptsDir, output);
+    const destFile = path.join(rootDir, output);
     
-    for (const url of sources) {
-      try {
-        console.log(`Downloading: ${url}`);
-        const response = await axios.get(url, { timeout: 30000 });
-        const lines = response.data.split('\n');
-        
-        for (let line of lines) {
-          line = line.trim();
-          
-          // 跳过注释和空行
-          if (!line || line.startsWith('#')) continue;
-          
-          // 移除行尾注释
-          line = line.replace(/#.*$/, '').trim();
-          
-          // 移除前缀
-          line = line.replace(/^(DOMAIN-KEYWORD,|DOMAIN-SUFFIX,|DOMAIN,|\+\.|\*\.|\.)/g, '');
-          
-          // 移除后缀
-          line = line.replace(/,reject$/gi, '');
-          
-          // 转换为小写
-          line = line.toLowerCase();
-          
-          if (line) {
-            allRules.add(line);
-          }
-        }
-      } catch (error) {
-        console.error(`Failed to download ${url}:`, error.message);
-      }
+    if (fs.existsSync(sourceFile)) {
+      fs.renameSync(sourceFile, destFile);
     }
     
-    // 排序
-    const sortedRules = Array.from(allRules).sort();
-    
-    // 应用关键词排除
+    // 后处理：应用额外的关键词排除
     const excludeKeywordFile = path.join(scriptsDir, 'exclude-keyword.txt');
-    let filteredRules = sortedRules;
-    
     if (fs.existsSync(excludeKeywordFile)) {
+      console.log('Applying additional keyword exclusions...');
       const excludeKeywords = fs.readFileSync(excludeKeywordFile, 'utf8')
         .split('\n')
         .map(line => line.trim())
         .filter(line => line && !line.startsWith('#'));
       
-      filteredRules = sortedRules.filter(rule => {
-        return !excludeKeywords.some(keyword => rule.includes(keyword));
+      const content = fs.readFileSync(destFile, 'utf8');
+      const lines = content.split('\n');
+      const filtered = lines.filter(line => {
+        if (!line.trim() || line.startsWith('#')) return true;
+        return !excludeKeywords.some(keyword => line.includes(keyword));
       });
+      
+      fs.writeFileSync(destFile, filtered.join('\n'));
     }
     
-    // 添加 DOMAIN-SUFFIX 前缀
-    const formattedRules = filteredRules.map(rule => `DOMAIN-SUFFIX,${rule}`);
-    
-    // 添加计数和时间戳
-    const count = formattedRules.length;
-    const currentDate = new Date().toLocaleString('zh-CN', { 
-      timeZone: 'Asia/Shanghai',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    }).replace(/\//g, '-').replace(',', '');
-    const header = `# Count: ${count}, Updated: ${currentDate}`;
-    
-    const content = [header, ...formattedRules].join('\n');
-    fs.writeFileSync(outputPath, content);
-    
-    // 生成 mihomo 格式
-    const mihomoContent = formattedRules
-      .map(rule => rule.replace(/^DOMAIN-SUFFIX,/, '+.'))
+    // 生成 mihomo 格式（使用 +. 前缀）
+    console.log('Converting to mihomo format...');
+    const content = fs.readFileSync(destFile, 'utf8');
+    const mihomoContent = content
+      .split('\n')
+      .filter(line => !line.startsWith('#'))
+      .map(line => {
+        if (line.startsWith('DOMAIN-SUFFIX,')) {
+          return line.replace(/^DOMAIN-SUFFIX,/, '+.');
+        }
+        if (line.startsWith('||')) {
+          return line.replace(/^\|\|/, '+.').replace(/\^$/, '');
+        }
+        return line;
+      })
+      .filter(line => line.trim())
       .join('\n');
     
-    const mihomoFile = `${outputPath}.mihomo`;
+    const mihomoFile = `${destFile}.mihomo`;
     fs.writeFileSync(mihomoFile, mihomoContent);
     
     // 尝试使用 mihomo 转换
     try {
       execSync(`mihomo convert-ruleset domain text "${mihomoFile}" "${output.replace('.txt', '.mrs')}"`, {
-        cwd: rootDir,
+        cwd: path.join(__dirname, '..', '..'),
         stdio: 'inherit'
       });
     } catch (error) {
@@ -207,6 +170,7 @@ async function generateAisMerged() {
       fs.unlinkSync(mihomoFile);
     }
     
+    const count = content.split('\n').filter(line => !line.startsWith('#') && line.trim()).length;
     console.log(`✓ Generated ${output} with ${count} domains`);
     
   } catch (error) {
