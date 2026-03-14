@@ -18,7 +18,7 @@ const adsConfig = {
     },
     {
       name: "OISD Big List",
-      source: "https://big.oisd.nl/domainswild2",
+      source: "https://raw.githubusercontent.com/sjhgvr/oisd/main/domainswild2_big.txt",
       type: "adblock",
       transformations: ["RemoveComments", "Validate"]
     },
